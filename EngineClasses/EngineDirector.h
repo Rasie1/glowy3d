@@ -1,0 +1,92 @@
+/****************************************************************************
+This file is part of glowy2d.
+
+Copyright (c) 2014 Kvachev 'Rasie1' V. D.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+****************************************************************************/
+#pragma once
+#include "IncludesEngine.h"
+#include "Layer.h"
+#include "Camera.h"
+
+namespace glowy2d
+{
+	class Layer;
+
+	class DLLEXPORT EngineDirector
+	{
+	public:
+		static EngineDirector * getInstance();
+
+		void add(Layer * newLayer);
+
+		//Sets GL program ID
+		unsigned getProgram() const;
+		void setProgram(unsigned programId);
+
+		//Sets GL window
+		GLFWwindow * getWindow() const;
+		void setWindow(GLFWwindow * window);
+
+		//Data accessors
+		usvec2 getWindowSize() const;
+		double getDeltaTime() const;
+		double deltaTime;
+		
+		Camera * camera;
+
+		bool init(GLFWwindow * window, unsigned program_id);
+
+		void render() const;
+
+		//Scheduled updates
+		void update_16ms();
+		void update_128ms();
+		void update_512ms();
+		void update_1024ms();
+		void update_8172ms();
+		void update_65536ms();
+
+		unsigned int ibo_id;
+
+		//Main shader program
+		unsigned program_id;
+
+		int initialization();
+		void update();
+
+		//Layers list
+		Layer ** layers;
+		unsigned short layersNum;
+
+	private:
+		EngineDirector();
+		~EngineDirector();
+		static bool singletonInitialised;
+		static EngineDirector singletonInstance;
+
+
+		//OpenGL data
+		GLFWwindow * windowHandle;
+
+		//Data
+		usvec2 windowSize;
+	};
+}

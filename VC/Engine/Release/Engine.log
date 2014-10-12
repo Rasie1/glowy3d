@@ -1,0 +1,53 @@
+﻿Build started 11.10.14 23:54:59.
+     1>Project "C:\Users\rasiel\Documents\GitHub\Engine\VC\Engine\Engine.vcxproj" on node 2 (Build target(s)).
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of Director.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are ..\..\Classes\Director.cpp, ..\..\EngineClasses\Director.cpp.
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\rasiel\Documents\GitHub\Engine\Resources /IC:\Users\rasiel\Documents\GitHub\Engine\EngineClasses /IC:\Users\rasiel\Documents\GitHub\Engine\Classes /IC:\Users\rasiel\Documents\GitHub\Engine\Dependencies\glm /IC:\Users\rasiel\Documents\GitHub\Engine\Dependencies\glfw\include /I"C:\Users\rasiel\Documents\GitHub\glfwApp\Dependencies\glew-1.11.0\include" /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp"Release\Engine.pch" /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\Classes\Main.cpp
+         Main.cpp
+         Compiling precompiled headers.
+         
+     1>..\..\Classes\Main.cpp(8): warning C4244: 'initializing' : conversion from 'double' to 'const int', possible loss of data
+     1>..\..\Classes\Main.cpp(9): warning C4244: 'initializing' : conversion from 'double' to 'const int', possible loss of data
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\rasiel\Documents\GitHub\Engine\VC\Release\Engine.exe" /NOLOGO /LIBPATH:"C:\Users\rasiel\Documents\GitHub\Engine\Dependencies\glfw\lib-msvc120" /LIBPATH:"C:\Users\rasiel\Documents\GitHub\Engine\Dependencies\glew-1.11.0\lib\Release\Win32" glfw3.lib glew32.lib opengl32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\rasiel\Documents\GitHub\Engine\VC\Release\Engine.pdb" /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\rasiel\Documents\GitHub\Engine\VC\Release\Engine.lib" /MACHINE:X86 /SAFESEH Release\Actor.obj
+         Release\Director.obj
+         Release\Main.obj
+         Release\World.obj
+         Release\BitmapSaver.obj
+         Release\Camera.obj
+         Release\Director.obj
+         Release\EngineDirector.obj
+         Release\EngineInitialization.obj
+         Release\FileOperation.obj
+         Release\InterfaceObject2D.obj
+         Release\Layer.obj
+         Release\main_win32.obj
+         Release\Object2D.obj
+         Release\Sprite.obj
+         Release\stdafx.obj
+         Release\Tex2D.obj
+         Release\TextureAtlas.obj
+         Release\TextureData.obj
+         Release\TextureInfo.obj
+     1>LINK : warning C4727: PCH named c:\users\rasiel\documents\github\engine\vc\engine\release\engine.pch with same timestamp found in C:\Users\rasiel\Documents\GitHub\Engine\VC\Engine\Release\World.obj and C:\Users\rasiel\Documents\GitHub\Engine\VC\Engine\Release\Director.obj.  Using first PCH.
+     1>LINK : warning C4727: PCH named c:\users\rasiel\documents\github\engine\vc\engine\release\engine.pch with same timestamp found in C:\Users\rasiel\Documents\GitHub\Engine\VC\Engine\Release\Camera.obj and C:\Users\rasiel\Documents\GitHub\Engine\VC\Engine\Release\Actor.obj.  Using first PCH.
+     1>Release\Director.obj : warning LNK4042: object specified more than once; extras ignored
+     1>LINK : warning C4727: PCH named c:\users\rasiel\documents\github\engine\vc\engine\release\engine.pch with same timestamp found in C:\Users\rasiel\Documents\GitHub\Engine\VC\Engine\Release\EngineInitialization.obj and C:\Users\rasiel\Documents\GitHub\Engine\VC\Engine\Release\EngineDirector.obj.  Using first PCH.
+     1>LINK : warning C4727: PCH named c:\users\rasiel\documents\github\engine\vc\engine\release\engine.pch with same timestamp found in C:\Users\rasiel\Documents\GitHub\Engine\VC\Engine\Release\FileOperation.obj and C:\Users\rasiel\Documents\GitHub\Engine\VC\Engine\Release\BitmapSaver.obj.  Using first PCH.
+     1>LINK : warning C4727: PCH named c:\users\rasiel\documents\github\engine\vc\engine\release\engine.pch with same timestamp found in C:\Users\rasiel\Documents\GitHub\Engine\VC\Engine\Release\InterfaceObject2D.obj and C:\Users\rasiel\Documents\GitHub\Engine\VC\Engine\Release\BitmapSaver.obj.  Using first PCH.
+     1>LINK : warning C4727: PCH named c:\users\rasiel\documents\github\engine\vc\engine\release\engine.pch with same timestamp found in C:\Users\rasiel\Documents\GitHub\Engine\VC\Engine\Release\main_win32.obj and C:\Users\rasiel\Documents\GitHub\Engine\VC\Engine\Release\EngineDirector.obj.  Using first PCH.
+     1>LINK : warning C4727: PCH named c:\users\rasiel\documents\github\engine\vc\engine\release\engine.pch with same timestamp found in C:\Users\rasiel\Documents\GitHub\Engine\VC\Engine\Release\Object2D.obj and C:\Users\rasiel\Documents\GitHub\Engine\VC\Engine\Release\BitmapSaver.obj.  Using first PCH.
+     1>LINK : warning C4727: PCH named c:\users\rasiel\documents\github\engine\vc\engine\release\engine.pch with same timestamp found in C:\Users\rasiel\Documents\GitHub\Engine\VC\Engine\Release\Sprite.obj and C:\Users\rasiel\Documents\GitHub\Engine\VC\Engine\Release\Actor.obj.  Using first PCH.
+     1>LINK : warning C4727: PCH named c:\users\rasiel\documents\github\engine\vc\engine\release\engine.pch with same timestamp found in C:\Users\rasiel\Documents\GitHub\Engine\VC\Engine\Release\stdafx.obj and C:\Users\rasiel\Documents\GitHub\Engine\VC\Engine\Release\BitmapSaver.obj.  Using first PCH.
+     1>LINK : warning C4727: PCH named c:\users\rasiel\documents\github\engine\vc\engine\release\engine.pch with same timestamp found in C:\Users\rasiel\Documents\GitHub\Engine\VC\Engine\Release\Tex2D.obj and C:\Users\rasiel\Documents\GitHub\Engine\VC\Engine\Release\EngineDirector.obj.  Using first PCH.
+     1>LINK : warning C4727: PCH named c:\users\rasiel\documents\github\engine\vc\engine\release\engine.pch with same timestamp found in C:\Users\rasiel\Documents\GitHub\Engine\VC\Engine\Release\TextureAtlas.obj and C:\Users\rasiel\Documents\GitHub\Engine\VC\Engine\Release\EngineDirector.obj.  Using first PCH.
+     1>LINK : warning C4727: PCH named c:\users\rasiel\documents\github\engine\vc\engine\release\engine.pch with same timestamp found in C:\Users\rasiel\Documents\GitHub\Engine\VC\Engine\Release\TextureData.obj and C:\Users\rasiel\Documents\GitHub\Engine\VC\Engine\Release\EngineDirector.obj.  Using first PCH.
+     1>LINK : warning C4727: PCH named c:\users\rasiel\documents\github\engine\vc\engine\release\engine.pch with same timestamp found in C:\Users\rasiel\Documents\GitHub\Engine\VC\Engine\Release\TextureInfo.obj and C:\Users\rasiel\Documents\GitHub\Engine\VC\Engine\Release\EngineDirector.obj.  Using first PCH.
+         Generating code
+         Finished generating code
+         Engine.vcxproj -> C:\Users\rasiel\Documents\GitHub\Engine\VC\Release\Engine.exe
+     1>Done Building Project "C:\Users\rasiel\Documents\GitHub\Engine\VC\Engine\Engine.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.79
