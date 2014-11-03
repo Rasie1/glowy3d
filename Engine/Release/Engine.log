@@ -1,0 +1,19 @@
+﻿Build started 02.11.14 19:03:38.
+     1>Project "C:\Users\rasiel\Documents\GitHub\Glowy2D\Engine\Engine.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Source /I"C:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Dependencies\zlib-1.2.8" /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Dependencies\lpng /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Dependencies\glm /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Dependencies\glfw\include /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Dependencies\glew\include /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yu"epc.h" /Fp"Release\Engine.pch" /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Source\Graphics\Material.cpp Source\Graphics\TextureInfo.cpp Source\Graphics\TexturePartInfo.cpp
+         Material.cpp
+     1>Source\Graphics\Material.cpp(1): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "epc.h"' to your source?
+         TextureInfo.cpp
+     1>Source\Graphics\TextureInfo.cpp(24): warning C4627: '#include "Graphics/TextureInfo.h"': skipped when looking for precompiled header use
+                 Add directive to 'epc.h' or rebuild precompiled header
+     1>Source\Graphics\TextureInfo.cpp(61): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "epc.h"' to your source?
+         TexturePartInfo.cpp
+     1>Source\Graphics\TexturePartInfo.cpp(24): warning C4627: '#include "Graphics/TexturePartInfo.h"': skipped when looking for precompiled header use
+                 Add directive to 'epc.h' or rebuild precompiled header
+     1>Source\Graphics\TexturePartInfo.cpp(56): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "epc.h"' to your source?
+     1>Done Building Project "C:\Users\rasiel\Documents\GitHub\Glowy2D\Engine\Engine.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.46

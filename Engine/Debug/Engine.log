@@ -1,0 +1,35 @@
+﻿Build started 03.11.14 12:21:57.
+     1>Project "C:\Users\rasiel\Documents\GitHub\Glowy2D\Engine\Engine.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Source /I"C:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Dependencies\zlib-1.2.8" /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Dependencies\lpng /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Dependencies\glm /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Dependencies\glfw\include /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Dependencies\glew\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"epc.h" /Fp"Debug\Engine.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Source\Base\EngineDirector.cpp
+         EngineDirector.cpp
+     1>c:\users\rasiel\documents\github\glowy2d\engine\source\base\enginedirector.cpp(123): warning C4244: 'argument' : conversion from 'double' to 'const float', possible loss of data
+     1>c:\users\rasiel\documents\github\glowy2d\engine\source\base\enginedirector.cpp(127): warning C4244: 'argument' : conversion from 'double' to 'const float', possible loss of data
+     1>c:\users\rasiel\documents\github\glowy2d\engine\source\base\enginedirector.cpp(244): warning C4800: 'int' : forcing value to bool 'true' or 'false' (performance warning)
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"C:\Users\rasiel\Documents\GitHub\Glowy2D\Debug\Engine.lib" /NOLOGO Debug\epc.obj
+         Debug\Action.obj
+         Debug\EngineDirector.obj
+         Debug\EngineInitialization.obj
+         Debug\ScheduledAction.obj
+         Debug\Scheduler.obj
+         Debug\Camera.obj
+         Debug\FramerateCounter.obj
+         Debug\InterfaceObject2D.obj
+         Debug\Layer.obj
+         Debug\Material.obj
+         Debug\Object2D.obj
+         Debug\Object3D.obj
+         Debug\Sprite.obj
+         Debug\Tex2D.obj
+         Debug\TextureAtlas.obj
+         Debug\TextureData.obj
+         Debug\Texture.obj
+         Debug\TextureInfo.obj
+         Debug\TexturePartInfo.obj
+         Engine.vcxproj -> C:\Users\rasiel\Documents\GitHub\Glowy2D\Debug\Engine.lib
+     1>Done Building Project "C:\Users\rasiel\Documents\GitHub\Glowy2D\Engine\Engine.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:04.11

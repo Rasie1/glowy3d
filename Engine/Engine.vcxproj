@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Engine.h" />
+    <ClInclude Include="epc.h" />
+    <ClInclude Include="Source\Base\Action.h" />
+    <ClInclude Include="Source\Base\Constants.h" />
+    <ClInclude Include="Source\Base\EngineDirector.h" />
+    <ClInclude Include="Source\Base\EngineInitialization.h" />
+    <ClInclude Include="Source\Base\IncludesEngine.h" />
+    <ClInclude Include="Source\Base\ScheduledAction.h" />
+    <ClInclude Include="Source\Base\Scheduler.h" />
+    <ClInclude Include="Source\Graphics\Camera.h" />
+    <ClInclude Include="Source\Graphics\ConstantsNumbers.h" />
+    <ClInclude Include="Source\Graphics\ConstantsTriangleList.h" />
+    <ClInclude Include="Source\Graphics\FramerateCounter.h" />
+    <ClInclude Include="Source\Graphics\InterfaceAnchorPoint.h" />
+    <ClInclude Include="Source\Graphics\InterfaceDrawable.h" />
+    <ClInclude Include="Source\Graphics\InterfaceMovable.h" />
+    <ClInclude Include="Source\Graphics\InterfaceObject2D.h" />
+    <ClInclude Include="Source\Graphics\InterfaceRotatable.h" />
+    <ClInclude Include="Source\Graphics\InterfaceScalable.h" />
+    <ClInclude Include="Source\Graphics\InterfaceScene.h" />
+    <ClInclude Include="Source\Graphics\InterfaceZOrderable.h" />
+    <ClInclude Include="Source\Graphics\Layer.h" />
+    <ClInclude Include="Source\Graphics\Material.h" />
+    <ClInclude Include="Source\Graphics\Object2D.h" />
+    <ClInclude Include="Source\Graphics\Object3D.h" />
+    <ClInclude Include="Source\Graphics\Sprite.h" />
+    <ClInclude Include="Source\Graphics\Tex2D.h" />
+    <ClInclude Include="Source\Graphics\TextureAtlas.h" />
+    <ClInclude Include="Source\Graphics\TextureData.h" />
+    <ClInclude Include="Source\Graphics\Texture.h" />
+    <ClInclude Include="Source\Graphics\TextureInfo.h" />
+    <ClInclude Include="Source\Graphics\TexturePartInfo.h" />
+    <ClInclude Include="Source\Math\AdditionGLM.h" />
+    <ClInclude Include="Source\Math\AdditionGLMrect.h" />
+    <ClInclude Include="Source\Math\PerlinNoise.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="epc.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Source\Base\Action.cpp" />
+    <ClCompile Include="Source\Base\EngineDirector.cpp" />
+    <ClCompile Include="Source\Base\EngineInitialization.cpp" />
+    <ClCompile Include="Source\Base\ScheduledAction.cpp" />
+    <ClCompile Include="Source\Base\Scheduler.cpp" />
+    <ClCompile Include="Source\Graphics\Camera.cpp" />
+    <ClCompile Include="Source\Graphics\FramerateCounter.cpp" />
+    <ClCompile Include="Source\Graphics\InterfaceObject2D.cpp" />
+    <ClCompile Include="Source\Graphics\Layer.cpp" />
+    <ClCompile Include="Source\Graphics\Material.cpp" />
+    <ClCompile Include="Source\Graphics\Object2D.cpp" />
+    <ClCompile Include="Source\Graphics\Object3D.cpp" />
+    <ClCompile Include="Source\Graphics\Sprite.cpp" />
+    <ClCompile Include="Source\Graphics\Tex2D.cpp" />
+    <ClCompile Include="Source\Graphics\TextureAtlas.cpp" />
+    <ClCompile Include="Source\Graphics\TextureData.cpp" />
+    <ClCompile Include="Source\Graphics\Texture.cpp" />
+    <ClCompile Include="Source\Graphics\TextureInfo.cpp" />
+    <ClCompile Include="Source\Graphics\TexturePartInfo.cpp" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{7067EED1-82DD-40DD-B790-574155E62B73}</ProjectGuid>
+    <RootNamespace>Engine</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(SolutionDir)\Engine;$(SolutionDir)\Engine\Source;$(SolutionDir)\Engine\Dependencies\zlib-1.2.8;$(SolutionDir)\Engine\Dependencies\lpng;$(SolutionDir)\Engine\Dependencies\glm;$(SolutionDir)\Engine\Dependencies\glfw\include;$(SolutionDir)\Engine\Dependencies\glew\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>epc.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(SolutionDir)\Engine;$(SolutionDir)\Engine\Source;$(SolutionDir)\Engine\Dependencies\zlib-1.2.8;$(SolutionDir)\Engine\Dependencies\lpng;$(SolutionDir)\Engine\Dependencies\glm;$(SolutionDir)\Engine\Dependencies\glfw\include;$(SolutionDir)\Engine\Dependencies\glew\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>epc.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
