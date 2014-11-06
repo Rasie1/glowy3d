@@ -1,11 +1,43 @@
-﻿Build started 03.11.14 12:21:57.
-     1>Project "C:\Users\rasiel\Documents\GitHub\Glowy2D\Engine\Engine.vcxproj" on node 2 (Build target(s)).
+﻿Build started 05.11.14 16:26:48.
+     1>Project "C:\Users\rasiel\Documents\GitHub\Glowy2D\Engine\Engine.vcxproj" on node 2 (Rebuild target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Source /I"C:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Dependencies\zlib-1.2.8" /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Dependencies\lpng /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Dependencies\glm /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Dependencies\glfw\include /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Dependencies\glew\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"epc.h" /Fp"Debug\Engine.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Source\Base\EngineDirector.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Source /I"C:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Dependencies\zlib-1.2.8" /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Dependencies\lpng /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Dependencies\glm /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Dependencies\glfw\include /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Dependencies\glew\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"epc.h" /Fp"Debug\Engine.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt epc.cpp
+         epc.cpp
+         Compiling precompiled headers.
+         
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Source /I"C:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Dependencies\zlib-1.2.8" /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Dependencies\lpng /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Dependencies\glm /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Dependencies\glfw\include /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Dependencies\glew\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"epc.h" /Fp"Debug\Engine.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Source\Base\Action.cpp Source\Base\EngineDirector.cpp Source\Base\EngineInitialization.cpp Source\Base\ScheduledAction.cpp Source\Base\Scheduler.cpp Source\Graphics\Camera.cpp Source\Graphics\FramerateCounter.cpp Source\Graphics\InterfaceObject2D.cpp Source\Graphics\Layer.cpp Source\Graphics\Material.cpp Source\Graphics\Object2D.cpp Source\Graphics\Object3D.cpp Source\Graphics\Sprite.cpp Source\Graphics\Tex2D.cpp Source\Graphics\TextureAtlas.cpp Source\Graphics\TextureData.cpp Source\Graphics\Texture.cpp Source\Graphics\TextureInfo.cpp Source\Graphics\TexturePartInfo.cpp Source\Platforms\Input.cpp Source\Platforms\OpenGL.cpp Source\Platforms\Renderer.cpp Source\Platforms\ShaderProgram.cpp Source\Platforms\VertexBuffer.cpp
+         VertexBuffer.cpp
+         ShaderProgram.cpp
+         Renderer.cpp
+         OpenGL.cpp
+         Input.cpp
+     1>c:\users\rasiel\documents\github\glowy2d\engine\source\platforms\input.cpp(19): warning C4800: 'int' : forcing value to bool 'true' or 'false' (performance warning)
+         TexturePartInfo.cpp
+         TextureInfo.cpp
+         Texture.cpp
+         TextureData.cpp
+         TextureAtlas.cpp
+         Tex2D.cpp
+         Sprite.cpp
+         Object3D.cpp
+         Object2D.cpp
+         Material.cpp
+         Layer.cpp
+         InterfaceObject2D.cpp
+         FramerateCounter.cpp
+         Camera.cpp
+         Scheduler.cpp
+         Generating Code...
+     1>c:\users\rasiel\documents\github\glowy2d\engine\source\graphics\textureinfo.cpp(54): warning C4715: 'glowy2d::TextureInfo::getTextureData' : not all control paths return a value
+         Compiling...
+         ScheduledAction.cpp
+         EngineInitialization.cpp
          EngineDirector.cpp
-     1>c:\users\rasiel\documents\github\glowy2d\engine\source\base\enginedirector.cpp(123): warning C4244: 'argument' : conversion from 'double' to 'const float', possible loss of data
-     1>c:\users\rasiel\documents\github\glowy2d\engine\source\base\enginedirector.cpp(127): warning C4244: 'argument' : conversion from 'double' to 'const float', possible loss of data
-     1>c:\users\rasiel\documents\github\glowy2d\engine\source\base\enginedirector.cpp(244): warning C4800: 'int' : forcing value to bool 'true' or 'false' (performance warning)
+     1>c:\users\rasiel\documents\github\glowy2d\engine\source\base\enginedirector.cpp(128): warning C4244: 'argument' : conversion from 'double' to 'const float', possible loss of data
+     1>c:\users\rasiel\documents\github\glowy2d\engine\source\base\enginedirector.cpp(132): warning C4244: 'argument' : conversion from 'double' to 'const float', possible loss of data
+     1>c:\users\rasiel\documents\github\glowy2d\engine\source\base\enginedirector.cpp(254): warning C4800: 'int' : forcing value to bool 'true' or 'false' (performance warning)
+         Action.cpp
+         Generating Code...
        Lib:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"C:\Users\rasiel\Documents\GitHub\Glowy2D\Debug\Engine.lib" /NOLOGO Debug\epc.obj
          Debug\Action.obj
@@ -27,9 +59,14 @@
          Debug\Texture.obj
          Debug\TextureInfo.obj
          Debug\TexturePartInfo.obj
+         Debug\Input.obj
+         Debug\OpenGL.obj
+         Debug\Renderer.obj
+         Debug\ShaderProgram.obj
+         Debug\VertexBuffer.obj
          Engine.vcxproj -> C:\Users\rasiel\Documents\GitHub\Glowy2D\Debug\Engine.lib
-     1>Done Building Project "C:\Users\rasiel\Documents\GitHub\Glowy2D\Engine\Engine.vcxproj" (Build target(s)).
+     1>Done Building Project "C:\Users\rasiel\Documents\GitHub\Glowy2D\Engine\Engine.vcxproj" (Rebuild target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:04.11
+Time Elapsed 00:00:03.27

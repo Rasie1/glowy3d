@@ -28,13 +28,14 @@ THE SOFTWARE.
 
 namespace glowy2d
 {
+	class ShaderProgram;
+
 	//Initializes and returns the window
 	class EngineInitialization
 	{
 	public:
 		static GLFWwindow * createWindow();
 
-		static GLuint EngineInitialization::loadShader(const char *vertex_path, const char *fragment_path);
 
 	private:
 		EngineInitialization() {}

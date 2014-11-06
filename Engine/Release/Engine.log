@@ -1,19 +1,44 @@
-﻿Build started 02.11.14 19:03:38.
+﻿Build started 04.11.14 16:45:57.
      1>Project "C:\Users\rasiel\Documents\GitHub\Glowy2D\Engine\Engine.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Source /I"C:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Dependencies\zlib-1.2.8" /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Dependencies\lpng /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Dependencies\glm /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Dependencies\glfw\include /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Dependencies\glew\include /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yu"epc.h" /Fp"Release\Engine.pch" /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Source\Graphics\Material.cpp Source\Graphics\TextureInfo.cpp Source\Graphics\TexturePartInfo.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Source /I"C:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Dependencies\zlib-1.2.8" /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Dependencies\lpng /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Dependencies\glm /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Dependencies\glfw\include /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Dependencies\glew\include /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yc"epc.h" /Fp"Release\Engine.pch" /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt epc.cpp
+         epc.cpp
+         Compiling precompiled headers.
+         
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Source /I"C:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Dependencies\zlib-1.2.8" /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Dependencies\lpng /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Dependencies\glm /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Dependencies\glfw\include /IC:\Users\rasiel\Documents\GitHub\Glowy2D\\Engine\Dependencies\glew\include /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yu"epc.h" /Fp"Release\Engine.pch" /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Source\Base\Action.cpp Source\Base\EngineDirector.cpp Source\Base\EngineInitialization.cpp Source\Base\ScheduledAction.cpp Source\Base\Scheduler.cpp Source\Graphics\Camera.cpp Source\Graphics\FramerateCounter.cpp Source\Graphics\InterfaceObject2D.cpp Source\Graphics\Layer.cpp Source\Graphics\Material.cpp Source\Graphics\Object2D.cpp Source\Graphics\Object3D.cpp Source\Graphics\Sprite.cpp Source\Graphics\Tex2D.cpp Source\Graphics\Texture.cpp Source\Graphics\TextureAtlas.cpp Source\Graphics\TextureData.cpp Source\Graphics\TextureInfo.cpp Source\Graphics\TexturePartInfo.cpp Source\Platforms\OpenGL.cpp Source\Platforms\Renderer.cpp Source\Platforms\ShaderProgram.cpp Source\Platforms\VertexBuffer.cpp
+         Action.cpp
+         EngineDirector.cpp
+     1>Source\Base\EngineDirector.cpp(127): warning C4244: 'argument' : conversion from 'double' to 'const float', possible loss of data
+     1>Source\Base\EngineDirector.cpp(131): warning C4244: 'argument' : conversion from 'double' to 'const float', possible loss of data
+     1>Source\Base\EngineDirector.cpp(248): warning C4800: 'int' : forcing value to bool 'true' or 'false' (performance warning)
+         EngineInitialization.cpp
+         ScheduledAction.cpp
+         Scheduler.cpp
+         Camera.cpp
+         FramerateCounter.cpp
+         InterfaceObject2D.cpp
+         Layer.cpp
+     1>Source\Graphics\Layer.cpp(151): error C2039: 'ibo_id' : is not a member of 'glowy2d::EngineDirector'
+                 C:\Users\rasiel\Documents\GitHub\Glowy2D\Engine\Source\Base/EngineDirector.h(40) : see declaration of 'glowy2d::EngineDirector'
+     1>Source\Graphics\Layer.cpp(151): error C2198: 'PFNGLBINDBUFFERPROC' : too few arguments for call
          Material.cpp
-     1>Source\Graphics\Material.cpp(1): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "epc.h"' to your source?
+         Object2D.cpp
+         Object3D.cpp
+         Sprite.cpp
+         Tex2D.cpp
+         Texture.cpp
+         TextureAtlas.cpp
+         TextureData.cpp
+     1>Source\Graphics\TextureData.cpp(141): warning C4018: '<' : signed/unsigned mismatch
          TextureInfo.cpp
-     1>Source\Graphics\TextureInfo.cpp(24): warning C4627: '#include "Graphics/TextureInfo.h"': skipped when looking for precompiled header use
-                 Add directive to 'epc.h' or rebuild precompiled header
-     1>Source\Graphics\TextureInfo.cpp(61): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "epc.h"' to your source?
          TexturePartInfo.cpp
-     1>Source\Graphics\TexturePartInfo.cpp(24): warning C4627: '#include "Graphics/TexturePartInfo.h"': skipped when looking for precompiled header use
-                 Add directive to 'epc.h' or rebuild precompiled header
-     1>Source\Graphics\TexturePartInfo.cpp(56): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "epc.h"' to your source?
+         OpenGL.cpp
+         Compiling...
+         Renderer.cpp
+         ShaderProgram.cpp
+         VertexBuffer.cpp
      1>Done Building Project "C:\Users\rasiel\Documents\GitHub\Glowy2D\Engine\Engine.vcxproj" (Build target(s)) -- FAILED.
 
 Build FAILED.
 
-Time Elapsed 00:00:00.46
+Time Elapsed 00:00:02.37

@@ -138,7 +138,7 @@ namespace glowy2d
 			return TEXTURE_LOAD_ERROR;
 		}
 		// set the individual row_pointers to point at the correct offsets of image_data
-		for (int i = 0; i < theight; ++i)
+		for (uint i = 0; i < theight; ++i)
 			row_pointers[theight - 1 - i] = data + i * rowbytes;
 
 		//read the png into image_data through row_pointers
@@ -213,5 +213,21 @@ namespace glowy2d
 	TextureData::~TextureData()
 	{
 		delete[] data;
+	}
+
+	void TextureData::modify(TextureData * data, const usvec2& offset, std::function<void(ubyte*, ubyte*)> blendFunction)
+	{
+		//not fastest copy code
+		uint16 i, j, row;
+		for (i = 0; i < data->size.y; ++i)
+		{
+			row = i + offset.y;
+			for (j = 0; j < data->size.x; ++j)
+			{
+				blendFunction(
+					&(this->data[4 * (size.x * row + j + offset.x)]),
+					&(data->data[4 * (data->size.x * i + j)]));
+			}
+		}
 	}
 }

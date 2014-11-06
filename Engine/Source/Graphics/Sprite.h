@@ -58,7 +58,6 @@ namespace glowy2d
 		void setScaleY(const float scale);
 		void addScaleY(const float offset);
 
-		//TODO
 		float getRotation() const;
 		void setRotation(const float rotation);
 		void addRotation(const float offset);

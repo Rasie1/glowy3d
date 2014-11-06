@@ -46,6 +46,11 @@
     <ClInclude Include="Source\Math\AdditionGLM.h" />
     <ClInclude Include="Source\Math\AdditionGLMrect.h" />
     <ClInclude Include="Source\Math\PerlinNoise.h" />
+    <ClInclude Include="Source\Platforms\Input.h" />
+    <ClInclude Include="Source\Platforms\OpenGL.h" />
+    <ClInclude Include="Source\Platforms\Renderer.h" />
+    <ClInclude Include="Source\Platforms\ShaderProgram.h" />
+    <ClInclude Include="Source\Platforms\VertexBuffer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="epc.cpp">
@@ -71,6 +76,11 @@
     <ClCompile Include="Source\Graphics\Texture.cpp" />
     <ClCompile Include="Source\Graphics\TextureInfo.cpp" />
     <ClCompile Include="Source\Graphics\TexturePartInfo.cpp" />
+    <ClCompile Include="Source\Platforms\Input.cpp" />
+    <ClCompile Include="Source\Platforms\OpenGL.cpp" />
+    <ClCompile Include="Source\Platforms\Renderer.cpp" />
+    <ClCompile Include="Source\Platforms\ShaderProgram.cpp" />
+    <ClCompile Include="Source\Platforms\VertexBuffer.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{7067EED1-82DD-40DD-B790-574155E62B73}</ProjectGuid>

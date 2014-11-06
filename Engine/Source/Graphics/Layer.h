@@ -32,6 +32,8 @@ THE SOFTWARE.
 
 namespace glowy2d
 {
+	class VertexBuffer;
+
 	class DLLEXPORT Layer : public InterfaceObject2D
 	{
 	public:
@@ -73,6 +75,7 @@ namespace glowy2d
 		//-Adds new texture to layer altas with image
 		Sprite * add(const char * imagePath);
 		Texture * addTexture(const char * imagePath);
+		Texture * addTexture(TextureData * imageData);
 		
 		void setShader(unsigned shader_id);
 		void setTexture(const Tex2D& tex);
@@ -107,8 +110,9 @@ namespace glowy2d
 		void addZOrder(const float offset);
 
 	private:
-		//OpenGL data
-		unsigned vbo_id, tex_coord_id;
+		//GPU data
+		VertexBuffer * vertexBuffer;
+		VertexBuffer * texBuffer;
 
 		//Vertex data
 		float * vertexCoords;

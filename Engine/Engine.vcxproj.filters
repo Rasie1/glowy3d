@@ -125,6 +125,21 @@
     <ClInclude Include="Source\Graphics\TexturePartInfo.h">
       <Filter>Graphics</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Platforms\OpenGL.h">
+      <Filter>Platforms</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Platforms\Renderer.h">
+      <Filter>Platforms</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Platforms\ShaderProgram.h">
+      <Filter>Platforms</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Platforms\VertexBuffer.h">
+      <Filter>Platforms</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Platforms\Input.h">
+      <Filter>Platforms</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Base\EngineInitialization.cpp">
@@ -184,6 +199,21 @@
     </ClCompile>
     <ClCompile Include="Source\Graphics\TexturePartInfo.cpp">
       <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Platforms\OpenGL.cpp">
+      <Filter>Platforms</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Platforms\Renderer.cpp">
+      <Filter>Platforms</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Platforms\ShaderProgram.cpp">
+      <Filter>Platforms</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Platforms\VertexBuffer.cpp">
+      <Filter>Platforms</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Platforms\Input.cpp">
+      <Filter>Platforms</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

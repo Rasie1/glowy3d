@@ -28,6 +28,10 @@ THE SOFTWARE.
 #include "Graphics/Sprite.h"
 #include "Graphics/Layer.h"
 #include "Base/EngineDirector.h"
+#include "Platforms/Renderer.h"
+#include "Platforms/ShaderProgram.h"
+#include "Platforms/VertexBuffer.h"
+#include "Platforms/Input.h"
 #include "png.h"
 
 using namespace glowy2d;
@@ -102,6 +106,7 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
 
 void processInput()
 {
+	
 	if (key_hold_w)
 	{
 		g_director->camera->addPosition(vec2(0.f, -MOVE_SPEED * g_director->getDeltaTime()));
@@ -138,10 +143,10 @@ namespace glowy2d
 	bool EngineDirector::singletonInitialised;
 	EngineDirector EngineDirector::singletonInstance;
 
-	bool EngineDirector::init(GLFWwindow * window, unsigned program_id)
+	bool EngineDirector::init(GLFWwindow * window, ShaderProgram * program)
 	{
 		setWindow(window);
-		setProgram(program_id);
+		setProgram(program);
 
 		camera = new Camera();
 		scheduler = new Scheduler();
@@ -153,12 +158,10 @@ namespace glowy2d
 		layersNum = 0;
 
 		windowSize = usvec2(SCREEN_WEED, SCREEN_HATE);
-		glGenBuffers(1, &ibo_id);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo_id);
 
-		const int maxSpritesPerLayer = 800 * 800;
-		const int iboSize = maxSpritesPerLayer * 6;
-		unsigned int * iboList = new unsigned[iboSize];
+		const uint maxSpritesPerLayer = 800 * 800;
+		const uint iboSize = maxSpritesPerLayer * 6;
+		uint * iboList = new uint[iboSize];
 
 		for (int iVertex = 0, i = 0; i < iboSize; iVertex += 4, i += 6)
 		{
@@ -170,11 +173,17 @@ namespace glowy2d
 			iboList[i + 5] = iVertex + 1;
 		}
 
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, iboSize * 4, iboList, GL_STATIC_DRAW);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+		indexBuffer = new VertexBuffer();
+		indexBuffer->bindForIndices();
+		indexBuffer->bufferElementArray(iboSize * 4, iboList);
 
 		delete[] iboList;
 		return true;
+	}
+
+	void EngineDirector::draw(const uint size) const
+	{
+		glDrawElements(GL_TRIANGLES, size, GL_UNSIGNED_INT, 0);
 	}
 
 	void EngineDirector::add(Layer * newLayer)
@@ -191,6 +200,7 @@ namespace glowy2d
 	{
 		singletonInitialised = false;
 
+		delete indexBuffer;
 		delete framerateCounter;
 		delete scheduler;
 		delete camera;
@@ -207,15 +217,15 @@ namespace glowy2d
 		return singletonInitialised ? &singletonInstance : 0;
 	}
 
-	void EngineDirector::setProgram(unsigned programId)
+	void EngineDirector::setProgram(ShaderProgram * program)
 	{
-		program_id = programId;
-		glUseProgram(program_id);
+		this->program = program;
+		program->use();
 	}
 
-	unsigned EngineDirector::getProgram() const
+	ShaderProgram * EngineDirector::getProgram() const
 	{
-		return program_id;
+		return program;
 	}
 
 	GLFWwindow * EngineDirector::getWindow() const
@@ -241,7 +251,7 @@ namespace glowy2d
 
 	bool EngineDirector::windowShouldClose()
 	{
-		return static_cast<bool>(glfwWindowShouldClose(windowHandle));
+		return bool(glfwWindowShouldClose(windowHandle));
 	}
 
 	double EngineDirector::getTime()
@@ -251,13 +261,10 @@ namespace glowy2d
 
 	void EngineDirector::frameStart()
 	{
-
 		processInput();
 		//GL stuff
-		const glm::mat4& MVP = camera->getMatrix();
-		GLuint MatrixID = glGetUniformLocation(getProgram(), "mvp");
-		glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &MVP[0][0]);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		Renderer::mvp(camera->getMatrix(), program);
+		Renderer::frameStart();
 
 
 		//Timing stuff
@@ -283,22 +290,26 @@ namespace glowy2d
 		std::exit(EXIT_SUCCESS);
 	}
 
-	void EngineDirector::setKeyCallback(GLFWkeyfun cbfun)
+	void EngineDirector::setKeyCallback(void(*cbfun)(GLFWwindow* w, int a, int b, int c, int d))
 	{
 		glfwSetKeyCallback(windowHandle, cbfun);
 	}
 
 	void EngineDirector::initEngine()
 	{
-
 		g_director = EngineDirector::getInstance();
 		auto window = EngineInitialization::createWindow();
 		g_director->init(window,
-			EngineInitialization::loadShader("Shaders\\Texture.vsh", "Shaders\\Texture.fsh"));
+			ShaderProgram::load("Shaders\\Texture.vsh", "Shaders\\Texture.fsh"));
 
 		g_director->setKeyCallback(key_callback);
 
-
+		/*for (uint i = 0; i < 350; ++i)
+		{
+			Input::callbacks[i] = nullptr;
+		}
+		g_director->setKeyCallback(callbackFunction);*/
+		
 
 		g_director->initialization();
 
@@ -308,13 +319,6 @@ namespace glowy2d
 	{
 		return !windowShouldClose();
 	}
-
-
-	const int snum = 10000;
-	const int lnum = 100;
-	auto l = new Layer*[lnum];
-	auto x = new Sprite**[lnum];
-	Sprite * s;
 
 
 	int EngineDirector::initialization()

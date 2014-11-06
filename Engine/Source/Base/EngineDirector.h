@@ -33,6 +33,8 @@ typedef GLFWwindow WindowHandle;
 namespace glowy2d
 {
 	class Layer;
+	class ShaderProgram;
+	class VertexBuffer;
 
 	class DLLEXPORT EngineDirector
 	{
@@ -40,10 +42,12 @@ namespace glowy2d
 		static EngineDirector * getInstance();
 
 		void add(Layer * newLayer);
+		
+		bool getKey(); 
 
 		//Sets GL program ID
-		unsigned getProgram() const;
-		void setProgram(unsigned programId);
+		ShaderProgram * getProgram() const;
+		void setProgram(ShaderProgram * program);
 
 		//Sets GL window
 		GLFWwindow * getWindow() const;
@@ -57,18 +61,16 @@ namespace glowy2d
 		Scheduler * scheduler;
 		FramerateCounter * framerateCounter;
 
-		bool init(WindowHandle * window, unsigned program_id);
+		bool init(WindowHandle * window, ShaderProgram * program);
 
 		void render() const;
 
-
-		unsigned int ibo_id;
-
-		//Main shader program
-		unsigned program_id;
+		VertexBuffer * indexBuffer;
+		ShaderProgram * program;
 
 		int initialization();
 		void update();
+		void draw(const uint size) const;
 
 		//Layers list
 		Layer * layers[MAX_LAYERS];
@@ -79,7 +81,7 @@ namespace glowy2d
 		void frameStart();
 		void frameEnded();
 		void exit();
-		void setKeyCallback(GLFWkeyfun cbfun);
+		void setKeyCallback(void(*cbfun)(GLFWwindow* w, int a, int b, int c, int d));
 		void initEngine();
 		bool shouldContinue();
 

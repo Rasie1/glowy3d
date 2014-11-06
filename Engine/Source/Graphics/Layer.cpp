@@ -22,13 +22,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
 #include "epc.h"
+#include <cmath>
 #include "Graphics/Layer.h"
 #include "Base/EngineDirector.h"
-#include <cmath>
+#include "Platforms/VertexBuffer.h"
 
 namespace glowy2d
 {
-	Layer * Layer::create(unsigned short maxSprites)
+	Layer * Layer::create(uint16 maxSprites)
 	{
 		auto ret = new Layer(maxSprites);
 		ret->initBuffers();
@@ -37,7 +38,7 @@ namespace glowy2d
 		return ret;
 	}
 
-	Layer::Layer(unsigned maxSprites)
+	Layer::Layer(uint maxSprites)
 	{
 		this->maxSprites = maxSprites;
 		vertexCoords = new float[maxSprites * 12];
@@ -47,25 +48,20 @@ namespace glowy2d
 
 	void Layer::initBuffers()
 	{
-#ifdef R_OPENGL
-		//Init texture coordinates buffer
-		glGenBuffers(1, &tex_coord_id);
-		glBindBuffer(GL_ARRAY_BUFFER, tex_coord_id);
-		glEnableVertexAttribArray(1);
-		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, 0);
-		glBufferData(GL_ARRAY_BUFFER, maxSprites/*spritesNum*/ * 32, texCoords, GL_DYNAMIC_DRAW);
+		texBuffer = new VertexBuffer();
+		texBuffer->bindForTextureAttrib();
+		texBuffer->buffer(maxSprites * 32, texCoords);
 
-		//Init vertex coordinates buffer
-		glGenBuffers(1, &vbo_id);
-		bindVbo();
-		glBufferData(GL_ARRAY_BUFFER, maxSprites /*spritesNum */ * 48, vertexCoords, GL_DYNAMIC_DRAW);
-#else //ifdef R_DIRECT3D
-
-#endif //R_OPENGL
+		vertexBuffer = new VertexBuffer();
+		vertexBuffer->bindForVertexAttrib();
+		vertexBuffer->buffer(maxSprites * 48, vertexCoords);
 	}
 
 	Layer::~Layer()
 	{
+		delete vertexBuffer;
+		delete texBuffer;
+
 		delete textures;
 		delete[] vertexCoords;
 		delete[] texCoords;
@@ -73,35 +69,23 @@ namespace glowy2d
 
 	void Layer::updateVertexBuffer()
 	{
-#ifdef R_OPENGL
-		glBindBuffer(GL_ARRAY_BUFFER, vbo_id);
-		glBufferSubData(GL_ARRAY_BUFFER, 0, spritesNum * 48, vertexCoords);
-#else //ifdef R_DIRECT3D
-
-#endif //R_OPENGL
+		vertexBuffer->bindForArray();
+		vertexBuffer->update(0, spritesNum * 48, vertexCoords);
 	};
 
 	void Layer::updateTextureBuffer()
 	{
-#ifdef R_OPENGL
-		glBindBuffer(GL_ARRAY_BUFFER, tex_coord_id);
-		glBufferSubData(GL_ARRAY_BUFFER, 0, spritesNum * 32, texCoords);
-#else //ifdef R_DIRECT3D
-
-#endif //R_OPENGL
+		texBuffer->bindForArray();
+		texBuffer->update(0, spritesNum * 32, texCoords);
 	}
 
 	void Layer::draw()
 	{
-#ifdef R_OPENGL
 		bindTexture();
 		bindVbo();
 		bindIbo();
 
-		glDrawElements(GL_TRIANGLES, spritesNum * 6, GL_UNSIGNED_INT, 0);
-#else //ifdef R_DIRECT3D
-
-#endif //R_OPENGL
+		EngineDirector::getInstance()->draw(spritesNum * 6);
 	}
 
 	void Layer::clear()
@@ -110,7 +94,11 @@ namespace glowy2d
 
 	Texture * Layer::addTexture(const char * imagePath)
 	{
-		TextureData * imageData = TextureData::load(imagePath);
+		return addTexture(TextureData::load(imagePath));
+	}
+
+	Texture * Layer::addTexture(TextureData * imageData)
+	{
 		Texture * tex = textures->add(imageData);
 
 		return tex;
@@ -118,20 +106,9 @@ namespace glowy2d
 
 	Sprite * Layer::add(Texture * texture)
 	{
-		/*texture->copyTo(&texCoords[spritesNum * 8]);
-
-		memcpy(&vertexCoords[spritesNum * 12], Constants::quadCoords, sizeof(Constants::quadCoords));
-		for (int i = 0; i < 12; ++i)
-		vertexCoords[i ] *= 256.f;
-
-		Sprite * ret = new Sprite(&vertexCoords[spritesNum * 12], &texCoords[spritesNum * 8]);
-		++spritesNum;
-		return ret;
-		*/
-
 		//Index for the start of current coords in array
-		const unsigned vertexPos = spritesNum * 12;
-		const unsigned texPos = spritesNum * 8;
+		const uint vertexPos = spritesNum * 12;
+		const uint texPos = spritesNum * 8;
 
 		texture->copyTo(texCoords + texPos);
 		memcpy(vertexCoords + vertexPos, Constants::quadCoords, sizeof(Constants::quadCoords));
@@ -165,34 +142,17 @@ namespace glowy2d
 
 	void Layer::bindVbo()
 	{
-#ifdef R_OPENGL
-		glBindBuffer(GL_ARRAY_BUFFER, vbo_id);
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
-#else //ifdef R_DIRECT3D
-
-#endif //R_OPENGL
+		vertexBuffer->bindForVertexAttrib();
 	}
 
 	void Layer::bindIbo()
 	{
-#ifdef R_OPENGL
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EngineDirector::getInstance()->ibo_id);
-#else //ifdef R_DIRECT3D
-
-#endif //R_OPENGL
+		EngineDirector::getInstance()->indexBuffer->bindForIndices();
 	}
 
 	void Layer::bindTexture()
 	{
-#ifdef R_OPENGL
-		glBindBuffer(GL_ARRAY_BUFFER, tex_coord_id);
-
-		glEnableVertexAttribArray(1);
-		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, 0);
-#else //ifdef R_DIRECT3D
-
-#endif //R_OPENGL
+		texBuffer->bindForTextureAttrib();
 
 		textures->bind();
 	}
