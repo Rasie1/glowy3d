@@ -1,0 +1,7 @@
+[glowy2d::Config]
+Platform 			= OpenGL3 	//D3D11 still doesn't work
+AntialiasingSamples = 4 		//1 - 4 (OpenGL supports more)
+FullScreen 			= 0
+ScreenWidth 		= 800
+ScreenHeight 		= 600
+MaxFPS 				= 0 		//0 if no limit

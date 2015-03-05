@@ -1,0 +1,51 @@
+Determining if files pthread.h exist failed with the following output:
+Change Dir: C:/Users/rasiel/Desktop/tmp/dep/glfw/lib/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/MinGW/bin/mingw32-make.exe" "cmTryCompileExec3770136503/fast"
+C:/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTryCompileExec3770136503.dir\build.make CMakeFiles/cmTryCompileExec3770136503.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/Users/rasiel/Desktop/tmp/dep/glfw/lib/CMakeFiles/CMakeTmp'
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -E cmake_progress_report C:\Users\rasiel\Desktop\tmp\dep\glfw\lib\CMakeFiles\CMakeTmp\CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec3770136503.dir/CheckIncludeFiles.c.obj
+C:\MinGW\bin\gcc.exe    -o CMakeFiles\cmTryCompileExec3770136503.dir\CheckIncludeFiles.c.obj   -c C:\Users\rasiel\Desktop\tmp\dep\glfw\lib\CMakeFiles\CMakeTmp\CheckIncludeFiles.c
+C:\Users\rasiel\Desktop\tmp\dep\glfw\lib\CMakeFiles\CMakeTmp\CheckIncludeFiles.c:2:21: fatal error: pthread.h: No such file or directory
+ #include <pthread.h>
+                     ^
+compilation terminated.
+CMakeFiles\cmTryCompileExec3770136503.dir\build.make:56: recipe for target 'CMakeFiles/cmTryCompileExec3770136503.dir/CheckIncludeFiles.c.obj' failed
+mingw32-make.exe[1]: *** [CMakeFiles/cmTryCompileExec3770136503.dir/CheckIncludeFiles.c.obj] Error 1
+mingw32-make.exe[1]: Leaving directory 'C:/Users/rasiel/Desktop/tmp/dep/glfw/lib/CMakeFiles/CMakeTmp'
+Makefile:117: recipe for target 'cmTryCompileExec3770136503/fast' failed
+mingw32-make.exe: *** [cmTryCompileExec3770136503/fast] Error 2
+
+Source:
+/* */
+#include <pthread.h>
+
+
+int main(void){return 0;}
+
+Performing C SOURCE FILE Test _GLFW_HAS_64ASLR failed with the following output:
+Change Dir: C:/Users/rasiel/Desktop/tmp/dep/glfw/lib/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/MinGW/bin/mingw32-make.exe" "cmTryCompileExec1694883555/fast"
+C:/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTryCompileExec1694883555.dir\build.make CMakeFiles/cmTryCompileExec1694883555.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/Users/rasiel/Desktop/tmp/dep/glfw/lib/CMakeFiles/CMakeTmp'
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -E cmake_progress_report C:\Users\rasiel\Desktop\tmp\dep\glfw\lib\CMakeFiles\CMakeTmp\CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1694883555.dir/src.c.obj
+C:\MinGW\bin\gcc.exe   -D_GLFW_HAS_64ASLR -Wl,--high-entropy-va   -o CMakeFiles\cmTryCompileExec1694883555.dir\src.c.obj   -c C:\Users\rasiel\Desktop\tmp\dep\glfw\lib\CMakeFiles\CMakeTmp\src.c
+Linking C executable cmTryCompileExec1694883555.exe
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTryCompileExec1694883555.dir\link.txt --verbose=1
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTryCompileExec1694883555.dir/objects.a
+C:\MinGW\bin\ar.exe cr CMakeFiles\cmTryCompileExec1694883555.dir/objects.a @CMakeFiles\cmTryCompileExec1694883555.dir\objects1.rsp
+C:\MinGW\bin\gcc.exe   -D_GLFW_HAS_64ASLR -Wl,--high-entropy-va   -Wl,--whole-archive CMakeFiles\cmTryCompileExec1694883555.dir/objects.a -Wl,--no-whole-archive  -o cmTryCompileExec1694883555.exe -Wl,--out-implib,libcmTryCompileExec1694883555.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTryCompileExec1694883555.dir\linklibs.rsp
+c:/mingw/bin/../lib/gcc/mingw32/4.8.1/../../../../mingw32/bin/ld.exe: unrecognized option '--high-entropy-va'
+c:/mingw/bin/../lib/gcc/mingw32/4.8.1/../../../../mingw32/bin/ld.exe: use the --help option for usage information
+collect2.exe: error: ld returned 1 exit status
+CMakeFiles\cmTryCompileExec1694883555.dir\build.make:89: recipe for target 'cmTryCompileExec1694883555.exe' failed
+mingw32-make.exe[1]: *** [cmTryCompileExec1694883555.exe] Error 1
+mingw32-make.exe[1]: Leaving directory 'C:/Users/rasiel/Desktop/tmp/dep/glfw/lib/CMakeFiles/CMakeTmp'
+Makefile:117: recipe for target 'cmTryCompileExec1694883555/fast' failed
+mingw32-make.exe: *** [cmTryCompileExec1694883555/fast] Error 2
+
+Source file was:
+int main(void) { return 0; }

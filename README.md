@@ -8,14 +8,16 @@ FEATURES IT HAS NOW
 * **Layer / Sprite system**
   Layer has it's own texture. You have to add a sprite to a layer with an 
   new/existing image to get it showed. Each layer is a separate Vertex Buffer 
-  Object. Sprite can be positioned
+  Object. 
 * **Automatic Texture Atlases**
   When image is added to layer, it's automatically being added to atlas, and 
   sprite is created so it will show the only new texture. You can reuse 
-  images.
+  images. Has automatic color borders for avoiding antialiasing artifacts
 * Early version, hard-to-use shader system, image loading system
+* Cameras, shedulers, config readers, etc...
+* Uses OpenGL, and has almost working DirectX support (it's broken now)
 
-FEATURES IT'S GOING TO HAVE
+FEATURES IT'S MAY BE GOING TO HAVE
 ===========================
 * **High Effiency**
   You should be able to reach maximum performance using glowy2d. 
@@ -31,8 +33,14 @@ FEATURES IT'S GOING TO HAVE
 
 HOW TO USE
 ==========
-If you somehow got there and somehow you want to use glowy2d, you are going to have a hard time, because I uploaded it to GitHub just to test it on differrent machines. It has only VC2013 project, and it will suffer from moving from one place to another, so you have to add some Include and Linker directories in properties.
-If you got it all working, check file Main.cpp for the main loop and initialization.
+Now it's ready to use with GCC under MinGW, just run "cmake "MinGW Makefiles" .." from the "build" directory. It even has
+all the libraries compiled for this platform. If you want to use another compiler or another operating system, you have
+to recompile all the libraries and correct some stuff in CMakeLists.txt (sorry for that)
+Libraries to compile:
+External: glfw, glew, zlib, lpng - each placed in it's folder in "Glowy2D/dep" directory
+glowy2d itself, use the CMakeLists.txt from "Glowy2D" directory.
+
+After you build everything, you will see some example platformer with messed up hand-made physics :D
 
 CONTRIBUTE?
 ===========
@@ -41,10 +49,12 @@ or have an idea, or want to help, or anything, you can contact me: rasielll@gmai
 
 CREDITS
 =======
-(c) 2014 Kvachev Vsevolod Dmitrievich
+(c) 2015 Kvachev V. D.
 
 This software also uses following libraries:
 GLEW http://glew.sourceforge.net/
 GLFW http://www.glfw.org/
 GLM http://glm.g-truc.net/0.9.5/index.html
+ZLIB
+LPNG
 So I wan't to thank anyone who developed those awesome libraries
