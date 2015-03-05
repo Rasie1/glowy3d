@@ -35,11 +35,8 @@ FEATURES IT'S MAY BE GOING TO HAVE
 
 HOW TO USE
 ==========
-Now it's ready to use with GCC under MinGW, just run "cmake "MinGW Makefiles" .." from the "build" directory. It even has
+Now it's ready to use with GCC under MinGW, just run "cmake "MinGW Makefiles" .." from the "build" directory. It even has all the libraries compiled for this platform. If you want to use another compiler or another operating system, you have to recompile all the libraries and correct some stuff in CMakeLists.txt (sorry for that)
 
-all the libraries compiled for this platform. If you want to use another compiler or another operating system, you have
-
-to recompile all the libraries and correct some stuff in CMakeLists.txt (sorry for that)
 Libraries to compile:
 
 External: glfw, glew, zlib, lpng - each placed in it's folder in "Glowy2D/dep" directory
