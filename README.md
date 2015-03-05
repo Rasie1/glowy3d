@@ -1,3 +1,4 @@
+![Alt text](logo.png "glowy2d")
 GLOWY2D
 =======
 This is 2D graphics engine/framework/wrapper written using C++11 and OpenGL. It's goal is to give the highest control and performance over 2D graphics with no (or almost no) overhead. 
