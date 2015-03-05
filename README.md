@@ -2,6 +2,7 @@
 GLOWY2D
 =======
 This is 2D graphics engine/framework/wrapper written using C++11 and OpenGL. It's goal is to give the highest control and performance over 2D graphics with no (or almost no) overhead. 
+
 Sometimes later it will support almost any platform (like Linux, Windows, Android, OSX, iOS) through different APIs (OpenGL 2.0 to 4.5, OpenGL ES 2.0 to 3.1 and may be WebGL), but now it is just on it's earliest development stage, so it supports only Windows.
 
 FEATURES IT HAS NOW
@@ -35,10 +36,14 @@ FEATURES IT'S MAY BE GOING TO HAVE
 HOW TO USE
 ==========
 Now it's ready to use with GCC under MinGW, just run "cmake "MinGW Makefiles" .." from the "build" directory. It even has
+
 all the libraries compiled for this platform. If you want to use another compiler or another operating system, you have
+
 to recompile all the libraries and correct some stuff in CMakeLists.txt (sorry for that)
 Libraries to compile:
+
 External: glfw, glew, zlib, lpng - each placed in it's folder in "Glowy2D/dep" directory
+
 glowy2d itself, use the CMakeLists.txt from "Glowy2D" directory.
 
 After you build everything, you will see some example platformer with messed up hand-made physics :D
@@ -53,9 +58,15 @@ CREDITS
 (c) 2015 Kvachev V. D.
 
 This software also uses following libraries:
+
 GLEW http://glew.sourceforge.net/
+
 GLFW http://www.glfw.org/
+
 GLM http://glm.g-truc.net/0.9.5/index.html
+
 ZLIB
+
 LPNG
+
 So I wan't to thank anyone who developed those awesome libraries
