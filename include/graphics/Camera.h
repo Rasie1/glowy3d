@@ -12,8 +12,8 @@ public:
 	//Returns Projection and View product matrix
 	const mat2& getMatrix();
 
-	void setPosition(const vec2& position);
-	void addPosition(const vec2& offset);
+	void setPosition(const glm::vec2& position);
+	void addPosition(const glm::vec2& offset);
 
 	void addZoom(const float offset);
 	void setDefaultZoom();
