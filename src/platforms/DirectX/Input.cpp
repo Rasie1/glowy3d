@@ -9,7 +9,10 @@ extern HINSTANCE g_hInstance;
 
 using namespace std;
 
-namespace glowy2d
+using namespace std;
+using namespace glm;
+
+namespace glowy3d
 {
 
 void Input::init()

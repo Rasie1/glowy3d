@@ -1,5 +1,5 @@
 /****************************************************************************
-This file is part of glowy2d.
+This file is part of glowy3d.
 
 Copyright (c) 2015 Kvachev 'Rasie1' V. D.
 
@@ -22,26 +22,29 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
 #pragma once
-#include "Base/Action.h"
-#include <functional>
+#include "g2dMath.h"
+#include "Math/quad.h"
 
-namespace glowy2d
+namespace glowy3d
 {
 
-class ScheduledAction : public Action
+//Texture class for passing between the sprites in the SAME layer
+//You should get those from Layer::addTexture
+class Texture
 {
 public:
-	ScheduledAction(std::function<void()> actionFunction, double delayTime);
+	const vec2 * getCoords() const;
+	usvec2 getSize() const;
 
-	void activateIfInTime(double currentTime) const;
-
-	double getLastTimeUsed() const;
-	double getDelay() const;
-	void   setDelay(double newDelayTime);
-
+	friend class Layer;
+	friend class TextureAtlas;
+	friend class Sprite;
+	
 private:
-	double delay;
-	double lastTimeUsed;
+	void copyTo(quad * destination);
+	
+	usvec2 size;
+	vec2 coords[4];
 };
 
 }

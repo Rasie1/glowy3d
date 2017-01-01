@@ -1,5 +1,5 @@
 /****************************************************************************
-This file is part of glowy2d.
+This file is part of glowy3d.
 
 Copyright (c) 2014 Kvachev 'Rasie1' V. D.
 
@@ -30,7 +30,7 @@ struct D3D11_INPUT_ELEMENT_DESC;
 struct ID3D10Blob;
 class VertexInterleavedBuffer;
 
-namespace glowy2d
+namespace glowy3d
 {
 
 class ShaderProgram

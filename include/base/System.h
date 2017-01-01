@@ -1,7 +1,7 @@
 /****************************************************************************
-This file is part of glowy2d.
+This file is part of glowy3d.
 
-Copyright (c) 2014 Kvachev 'Rasie1' V. D.
+Copyright (c) 2015 Kvachev 'Rasie1' V. D.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -22,3 +22,55 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
 #pragma once
+#include "Platforms/Input.h"
+
+namespace glowy3d
+{
+
+class Layer;
+class ShaderProgram;
+class VertexPosBuffer;
+class IndexBuffer;
+class Window;
+class Renderer;
+class Scheduler;
+class Config;
+class Camera;
+class ShaderProgram;
+class FramerateCounter;
+class Input;
+
+class System
+{
+public:
+	static double getDeltaTime();
+	static double getTime();
+
+	static bool init();
+
+	//Global componenets
+
+	static Config			 * config;
+	static Window			 * window;
+	static Renderer			 * renderer;
+	static Camera			 * camera;
+	static Scheduler		 * scheduler;
+	static FramerateCounter  * framerateCounter;
+	static IndexBuffer		 * indexBuffer;
+	static unsigned short	   layersNum;
+
+	static bool windowShouldClose();
+	static void frameStart();
+	static void frameEnded();
+	static void exit();
+	static bool shouldContinue();
+	static void setKeyFunction(Input::Keyboard key,
+							   Input::PressType type, 
+							   std::function<void()> callback);
+private:
+	System() {}
+	~System() {}
+	static double currentTime, lastTime, deltaTime;
+};
+
+}

@@ -7,7 +7,10 @@
 using namespace DirectX;
 using namespace std;
 
-namespace glowy2d
+using namespace std;
+using namespace glm;
+
+namespace glowy3d
 {
 
 IndexBuffer::IndexBuffer(const void * data, uint size)
@@ -25,7 +28,7 @@ IndexBuffer::IndexBuffer(const void * data, uint size)
 
 	resourceData.pSysMem = data;
 	HRESULT hr = 
-		glowy2d::Renderer::d3dDevice->CreateBuffer(&indexBufferDesc, 
+		glowy3d::Renderer::d3dDevice->CreateBuffer(&indexBufferDesc, 
 												   &resourceData, 
 												   &bufferId);
 	if (FAILED(hr))
@@ -39,7 +42,7 @@ IndexBuffer::~IndexBuffer()
 
 void IndexBuffer::bind()
 {
-	glowy2d::Renderer::d3dDeviceContext->IASetIndexBuffer(bufferId, DXGI_FORMAT_R32_UINT, 0);
+	glowy3d::Renderer::d3dDeviceContext->IASetIndexBuffer(bufferId, DXGI_FORMAT_R32_UINT, 0);
 }
 
 void IndexBuffer::updateData(const void * data, uint size, uint offset)

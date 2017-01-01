@@ -1,5 +1,5 @@
 /****************************************************************************
-This file is part of glowy2d.
+This file is part of glowy3d.
 
 Copyright (c) 2015 Kvachev 'Rasie1' V. D.
 
@@ -21,11 +21,13 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
-#include "epc.h"
-#include "Graphics/FramerateCounter.h"
-#include "Platforms/Window.h"
+#include "graphics/FramerateCounter.h"
+#include "platforms/Window.h"
 
-namespace glowy2d
+using namespace std;
+using namespace glm;
+
+namespace glowy3d
 {
 
 FramerateCounter::FramerateCounter() :

@@ -1,5 +1,5 @@
 /****************************************************************************
-This file is part of glowy2d.
+This file is part of glowy3d.
 
 Copyright (c) 2014 Kvachev 'Rasie1' V. D.
 
@@ -28,7 +28,7 @@ THE SOFTWARE.
 struct GLFWwindow;
 typedef GLFWwindow WindowHandle;
 
-namespace glowy2d
+namespace glowy3d
 {
 
 class Window

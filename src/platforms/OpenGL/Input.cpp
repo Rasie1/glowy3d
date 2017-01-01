@@ -5,7 +5,10 @@
 #include "Platforms/Window.h"
 #include "Platforms/Input.h"
 
-namespace glowy2d
+using namespace std;
+using namespace glm;
+
+namespace glowy3d
 {
 
 void callbackFunction(GLFWwindow * window, int key, int scancode, int action, int mods)

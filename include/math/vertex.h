@@ -1,7 +1,7 @@
 /****************************************************************************
-This file is part of glowy2d.
+This file is part of glowy3d.
 
-Copyright (c) 2015 Kvachev 'Rasie1' V. D.
+Copyright (c) 2014 Kvachev 'Rasie1' V. D.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -23,46 +23,26 @@ THE SOFTWARE.
 ****************************************************************************/
 #pragma once
 #include "g2dMath.h"
-#include "Graphics/Texture.h"
-#include "Graphics/TextureData.h"
-#include "Platforms/Tex2D.h"
 
-
-namespace glowy2d
+namespace glowy3d
 {
-	
-struct AtlasNode
+
+struct vertex
 {
-	AtlasNode(usrect rectangle) : r(rectangle) {}
-	AtlasNode * child[2];
-	usrect r;
-	TextureData * data;
-	bool closed = false;
-	bool leaf 	= true;
-	bool cutx 	= false;
-	AtlasNode * insert(TextureData * tex);
-};
+	//Data
+	vec2 position;
+	float zOrder;
+	vec2 texture;
 
-class TextureAtlas
-{
-public:
-	//A texture atlas. Use add() to add textures
-	//to atlas and then generate() to assemble them and
-	//prepare for drawing. add() returns a Texture 
-	//object that is passed to sprites.
-	TextureAtlas(unsigned short maxSize);
-	~TextureAtlas();
+	vertex() {}
+	vertex(const vec3& position, const vec2& texture);
+	vertex(float x, float y, float z, float u, float v);
 
-	//When you finished to add your images to the atlas,
-	//call generate() to get them ready for drawing
-	Texture * add(TextureData * data);
-
-	void bind();
-
-private:
-	AtlasNode * tree;
-	TextureData * data;
-	Tex2D tex;
+	float x() const;
+	float y() const;
+	float z() const;
+	float u() const;
+	float v() const;
 };
 
 }

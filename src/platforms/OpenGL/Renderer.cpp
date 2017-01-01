@@ -12,7 +12,10 @@
 #include <chrono>
 
 
-namespace glowy2d
+using namespace std;
+using namespace glm;
+
+namespace glowy3d
 {
 
 Renderer::Renderer()

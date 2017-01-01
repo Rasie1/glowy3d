@@ -5,7 +5,10 @@
 #include "Platforms/Renderer.h"
 #include "Platforms/ShaderProgram.h"
 
-namespace glowy2d
+using namespace std;
+using namespace glm;
+
+namespace glowy3d
 {
 
 UniformMat2::UniformMat2(ShaderProgram * program, const string& name, uint location) :

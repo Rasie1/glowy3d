@@ -1,5 +1,5 @@
 /****************************************************************************
-This file is part of glowy2d.
+This file is part of glowy3d.
 
 Copyright (c) 2015 Kvachev 'Rasie1' V. D.
 
@@ -22,28 +22,47 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
 #pragma once
-#include "Base/ScheduledAction.h"
+#include "g2dMath.h"
+#include "Graphics/Texture.h"
+#include "Graphics/TextureData.h"
+#include "Platforms/Tex2D.h"
 
-namespace glowy2d
+
+namespace glowy3d
 {
+	
+struct AtlasNode
+{
+	AtlasNode(usrect rectangle) : r(rectangle) {}
+	AtlasNode * child[2];
+	usrect r;
+	TextureData * data;
+	bool closed = false;
+	bool leaf 	= true;
+	bool cutx 	= false;
+	AtlasNode * insert(TextureData * tex);
+};
 
-class FramerateCounter : public Action
+class TextureAtlas
 {
 public:
-	FramerateCounter();
+	//A texture atlas. Use add() to add textures
+	//to atlas and then generate() to assemble them and
+	//prepare for drawing. add() returns a Texture 
+	//object that is passed to sprites.
+	TextureAtlas(unsigned short maxSize);
+	~TextureAtlas();
 
-	void countFrameStart(double currentTime);
-	void countFrameEnd(double timeOffset);
+	//When you finished to add your images to the atlas,
+	//call generate() to get them ready for drawing
+	Texture * add(TextureData * data);
 
-	void printStatAndResetFrames();
-
-	unsigned getFrames() const;
-	double   getAvgComputationalTime() const;
+	void bind();
 
 private:
-	unsigned frames = 0;
-	double avgComputationalTime = 0.0,
-		   frameStartTime;
+	AtlasNode * tree;
+	TextureData * data;
+	Tex2D tex;
 };
 
 }

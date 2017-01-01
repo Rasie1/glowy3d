@@ -1,5 +1,5 @@
 /****************************************************************************
-This file is part of glowy2d.
+This file is part of glowy3d.
 
 Copyright (c) 2015 Kvachev 'Rasie1' V. D.
 
@@ -24,7 +24,7 @@ THE SOFTWARE.
 #pragma once
 #include <map>
 
-namespace glowy2d
+namespace glowy3d
 {
 
 class ConfigReader

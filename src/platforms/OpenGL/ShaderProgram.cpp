@@ -29,7 +29,10 @@ std::string readFile(const char * filePath)
 }
 
 
-namespace glowy2d
+using namespace std;
+using namespace glm;
+
+namespace glowy3d
 {
 
 ShaderProgram::ShaderProgram(const std::string& vertexPath, const std::string& fragmentPath)

@@ -15,10 +15,10 @@ std::string GetLatestProfile();
 template<>
 std::string GetLatestProfile<ID3D11VertexShader>()
 {
-	assert(glowy2d::Renderer::d3dDevice);
+	assert(glowy3d::Renderer::d3dDevice);
 
 	// Query the current feature level:
-	D3D_FEATURE_LEVEL featureLevel = glowy2d::Renderer::d3dDevice->GetFeatureLevel();
+	D3D_FEATURE_LEVEL featureLevel = glowy3d::Renderer::d3dDevice->GetFeatureLevel();
 
 	switch (featureLevel)
 	{
@@ -57,11 +57,11 @@ std::string GetLatestProfile<ID3D11VertexShader>()
 template<>
 std::string GetLatestProfile<ID3D11PixelShader>()
 {
-	assert(glowy2d::Renderer::d3dDevice);
+	assert(glowy3d::Renderer::d3dDevice);
 
 	// Query the current feature level:
 	D3D_FEATURE_LEVEL featureLevel = 
-		glowy2d::Renderer::d3dDevice->GetFeatureLevel();
+		glowy3d::Renderer::d3dDevice->GetFeatureLevel();
 	switch (featureLevel)
 	{
 	case D3D_FEATURE_LEVEL_11_1:
@@ -120,7 +120,10 @@ std::string readFile(const char * filePath)
 
 using namespace std;
 
-namespace glowy2d
+using namespace std;
+using namespace glm;
+
+namespace glowy3d
 {
 
 ShaderProgram::ShaderProgram(const std::string& vertexPath, const std::string& fragmentPath)

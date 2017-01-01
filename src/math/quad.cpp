@@ -1,5 +1,5 @@
 /****************************************************************************
-This file is part of glowy2d.
+This file is part of glowy3d.
 
 Copyright (c) 2014 Kvachev 'Rasie1' V. D.
 
@@ -24,7 +24,10 @@ THE SOFTWARE.
 #include "epc.h"
 #include "Math/quad.h"
 
-namespace glowy2d
+using namespace std;
+using namespace glm;
+
+namespace glowy3d
 {
 	quad::quad(const vertex& one,   const vertex& two,
 			   const vertex& three, const vertex& four) :

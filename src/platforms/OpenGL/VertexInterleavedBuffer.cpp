@@ -7,7 +7,10 @@
 
 using namespace std;
 
-namespace glowy2d
+using namespace std;
+using namespace glm;
+
+namespace glowy3d
 {
 
 VertexInterleavedBuffer::VertexInterleavedBuffer(const void * data, uint size)

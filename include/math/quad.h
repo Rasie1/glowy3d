@@ -1,5 +1,5 @@
 /****************************************************************************
-This file is part of glowy2d.
+This file is part of glowy3d.
 
 Copyright (c) 2015 Kvachev 'Rasie1' V. D.
 
@@ -22,19 +22,36 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
 #pragma once
-#include "Graphics/Layer.h"
+#include "Math/vertex.h"
 
-namespace glowy2d
+namespace glowy3d
 {
 
-class LineLayer : public Layer
+struct quad
 {
-public:
-    LineLayer(uint maxSprites = 1024, std::string image = "blue.png");
-    ~LineLayer();
-    void addLine(vec2 p1, vec2 p2, float frequency, float zOrder);
-private:
-    Texture * lineTexture;
+	//top left
+	vertex bl;
+	//top right
+	vertex br;
+	//bottom right
+	vertex tr;
+	//bottom left
+	vertex tl;
+
+	quad(const vertex& one,   const vertex& two,
+	     const vertex& three, const vertex& four);
+	quad() {}
+
+	void setDefaultCoords();
 };
+
+inline void quad::setDefaultCoords()
+{
+	*this = quad(
+		vertex(0.f, 1.f, 0.f, 0.f, 1.f),
+		vertex(0.f, 0.f, 0.f, 0.f, 0.f),
+		vertex(1.f, 1.f, 0.f, 1.f, 1.f),
+		vertex(1.f, 0.f, 0.f, 1.f, 0.f));
+}
 
 }

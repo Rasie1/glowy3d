@@ -1,5 +1,5 @@
 /****************************************************************************
-This file is part of glowy2d.
+This file is part of glowy3d.
 
 Copyright (c) 2015 Kvachev 'Rasie1' V. D.
 
@@ -24,13 +24,13 @@ THE SOFTWARE.
 #pragma once
 
 #include "glm/glm.hpp"
-#include "Graphics/Layer.h"
-#include "Graphics/Sprite.h"
-#include "Base/System.h"
+#include "graphics/Layer.h"
+#include "graphics/Sprite.h"
+#include "base/System.h"
 
 #ifdef R_D3D
 struct HINSTANCE__;
-namespace glowy2d
+namespace glowy3d
 {
 	extern int glowy2Dmain(int(*init)(), void(*update)(), 
 		HINSTANCE__ * hInstance, int cmdShow);
@@ -38,23 +38,13 @@ namespace glowy2d
 #endif 
 
 #ifdef R_OGL
-namespace glowy2d
+namespace glowy3d
 {
 	int glowy2Dmain(int (*init)(), void (*update)());
 }
 #endif
 
-namespace game
+namespace glowy3d
 {
     using namespace glm;
 }
-namespace glowy2d
-{
-    using namespace glm;
-}
-
-using glm::vec2;
-using glm::usvec2;
-using glm::uint16;
-using glm::usrect;
-using glm::ubyte;

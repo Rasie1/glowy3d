@@ -1,5 +1,5 @@
 /****************************************************************************
-This file is part of glowy2d.
+This file is part of glowy3d.
 
 Copyright (c) 2015 Kvachev 'Rasie1' V. D.
 
@@ -25,7 +25,7 @@ THE SOFTWARE.
 #ifdef R_OGL
 #include "g2dMath.h"
 
-namespace glowy2d
+namespace glowy3d
 {
 
 class TextLayer

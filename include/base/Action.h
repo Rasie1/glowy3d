@@ -1,7 +1,7 @@
 /****************************************************************************
-This file is part of glowy2d.
+This file is part of glowy3d.
 
-Copyright (c) 2014 Kvachev 'Rasie1' V. D.
+Copyright (c) 2015 Kvachev 'Rasie1' V. D.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -22,27 +22,22 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
 #pragma once
-#include "g2dMath.h"
+#include <functional>
 
-namespace glowy2d
+namespace glowy3d
 {
 
-struct vertex
+class Action
 {
-	//Data
-	vec2 position;
-	float zOrder;
-	vec2 texture;
+public:
+	Action(std::function<void()> actionFunction) : action(actionFunction) {}
 
-	vertex() {}
-	vertex(const vec3& position, const vec2& texture);
-	vertex(float x, float y, float z, float u, float v);
+	~Action() {}
 
-	float x() const;
-	float y() const;
-	float z() const;
-	float u() const;
-	float v() const;
+	void activate() const;
+
+private:
+	std::function<void()> action;
 };
 
 }

@@ -1,5 +1,5 @@
 /****************************************************************************
-This file is part of glowy2d.
+This file is part of glowy3d.
 
 Copyright (c) 2015 Kvachev 'Rasie1' V. D.
 
@@ -22,46 +22,66 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
 #pragma once
-//Precompiled headers file
-
-//STD includes
-#include <cstdlib>
-#include <iostream>
-#include <algorithm>
-#include <ctime>
-#include <cmath>
-#include <functional>
-#include <vector>
-#include <stdexcept>
-#include <string>
-
-#ifdef R_OGL
-#include "GL/glew.h"
-#include "GLFW/glfw3.h"
-#endif
-
-#ifdef R_D3D
-#pragma comment(lib, "DirectXTex.lib")
-#pragma comment(lib, "d3d11.lib")
-#pragma comment(lib, "dinput8.lib")
-#pragma comment(lib, "dxguid.lib")
-#pragma comment(lib, "dxgi.lib")
-#pragma comment(lib, "d3dcompiler.lib")
-#pragma comment(lib, "winmm.lib")
-
-#include <d3d11.h>
-#include <d3d11shader.h>
-#include <d3dcompiler.h>
-#include <DirectXMath.h>
-#include <DirectXColors.h>
-#include <dinput.h>
-#include <windows.h>
-#endif
-
-//glowy2d includes
 #include "g2dMath.h"
-#include "Math/rect.h"
-#include "Base/System.h"
+#include "Math/quad.h"
 
-using namespace std;
-using namespace glm;
+namespace glowy3d
+{
+
+class Texture;
+class Sprite
+{
+public:
+	Sprite(quad * vboPointer);
+	~Sprite();
+
+	bool isHidden() const;
+	void setHidden(bool isHidden);
+
+	vec2 getPosition() const;
+	void setPosition(const vec2& pos);
+	void addPosition(const vec2& offset);
+
+	vec2 getScale() const;
+	void setScale(const vec2& scale);
+	void addScale(const vec2& offset);
+
+	vec2 getOrigin() const;
+	void setOrigin(const vec2& pos);
+	void addOrigin(const vec2& offset);
+
+	float getScaleX() const;
+	void setScaleX(const float scale);
+	void addScaleX(const float offset);
+
+	float getScaleY() const;
+	void setScaleY(const float scale);
+	void addScaleY(const float offset);
+
+	float getRotation() const;
+	void setRotation(const float rotation);
+	void addRotation(const float offset);
+
+	float getZOrder() const;
+	void setZOrder(const float zorder);
+	void addZOrder(const float offset);
+
+	Texture * getTexture() const;
+	void setTexture(Texture * texture);
+
+private:
+	vec2 position, 
+		 scale,
+		 origin;
+	float rotation;
+	bool is_hidden = false;
+
+	quad * coords;
+	Texture * texture;
+
+	bool has_changed = true;
+
+	void pointToVbo(float * vbo);
+};
+
+}

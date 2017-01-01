@@ -1,5 +1,5 @@
 /****************************************************************************
-This file is part of glowy2d.
+This file is part of glowy3d.
 
 Copyright (c) 2014 Kvachev 'Rasie1' V. D.
 
@@ -23,7 +23,10 @@ THE SOFTWARE.
 ****************************************************************************/
 #include "epc.h"
 #include "Math/vertex.h"
-namespace glowy2d
+using namespace std;
+using namespace glm;
+
+namespace glowy3d
 {
 	vertex::vertex(const vec3& position, const vec2& texture) :
 		position(position),

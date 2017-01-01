@@ -1,5 +1,5 @@
 /****************************************************************************
-This file is part of glowy2d.
+This file is part of glowy3d.
 
 Copyright (c) 2015 Kvachev 'Rasie1' V. D.
 
@@ -22,29 +22,19 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
 #pragma once
-#include "g2dMath.h"
-#include "Math/quad.h"
+#include "Graphics/Layer.h"
 
-namespace glowy2d
+namespace glowy3d
 {
 
-//Texture class for passing between the sprites in the SAME layer
-//You should get those from Layer::addTexture
-class Texture
+class LineLayer : public Layer
 {
 public:
-	const vec2 * getCoords() const;
-	usvec2 getSize() const;
-
-	friend class Layer;
-	friend class TextureAtlas;
-	friend class Sprite;
-	
+    LineLayer(uint maxSprites = 1024, std::string image = "blue.png");
+    ~LineLayer();
+    void addLine(vec2 p1, vec2 p2, float frequency, float zOrder);
 private:
-	void copyTo(quad * destination);
-	
-	usvec2 size;
-	vec2 coords[4];
+    Texture * lineTexture;
 };
 
 }

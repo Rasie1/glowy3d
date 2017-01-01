@@ -4,7 +4,10 @@
 #include "Platforms/IndexBuffer.h"
 #include "Platforms/Renderer.h"
 
-namespace glowy2d
+using namespace std;
+using namespace glm;
+
+namespace glowy3d
 {
 
 IndexBuffer::IndexBuffer(const void * data, uint size)

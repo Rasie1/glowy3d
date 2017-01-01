@@ -3,7 +3,10 @@
 #include "Engine.h"
 #include "Base/System.h"
 
-namespace glowy2d
+using namespace std;
+using namespace glm;
+
+namespace glowy3d
 {
 
 int glowy2Dmain(int(*init)(), void(*update)())

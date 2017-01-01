@@ -1,5 +1,5 @@
 /****************************************************************************
-This file is part of glowy2d.
+This file is part of glowy3d.
 
 Copyright (c) 2015 Kvachev 'Rasie1' V. D.
 
@@ -22,49 +22,25 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
 #pragma once
-#include "g2dMath.h"
+#include "Base/Action.h"
 
-namespace glowy2d
+#define MAX_SCHEDULES 512
+
+namespace glowy3d
 {
 
-class Config
+class Scheduler
 {
 public:
-	Config();
-	Config(const std::string& fileName);
-	~Config();
-
-	enum Platform
-	{
-		OpenGL3,
-		D3D11,
-	};
-
-	class Default
-	{
-	public:
-		static const usvec2   screenResolution;
-		static const Platform platform;
-		static const uint	  antialiasingSamples;
-		static const bool	  fullScreen;
-		static const uint	  maxFramerate;
-	};
-
-	void readFromFile(const std::string& filename);
-
-	uint	 getAntialiasing() const;
-	uint	 getMaxFramerate() const;
-	bool	 getVSync() const;
-	Platform getPlatform() const;
-	usvec2	 getScreenResolution() const;
-	bool	 getFullScreen() const;
+	void check(double currentTime);
+	void add(Action * action, double delay);
 
 private:
-	uint	 antialiasingSamples = Default::antialiasingSamples;
-	uint	 maxFramerate		 = Default::maxFramerate;
-	Platform platform		     = Default::platform;
-	usvec2	 screenResolution	 = Default::screenResolution;
-	bool	 fullScreen			 = Default::fullScreen;
+	Action * actions[MAX_SCHEDULES];
+	double   actionsLastTimeUsed[MAX_SCHEDULES];
+	double   actionsDelays[MAX_SCHEDULES];
+	unsigned actionsNum = 0;
+
 };
 
 }

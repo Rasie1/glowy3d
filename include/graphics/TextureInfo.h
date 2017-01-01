@@ -1,7 +1,7 @@
 /****************************************************************************
-This file is part of glowy2d.
+This file is part of glowy3d.
 
-Copyright (c) 2015 Kvachev 'Rasie1' V. D.
+Copyright (c) 2014 Kvachev 'Rasie1' V. D.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -22,22 +22,35 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
 #pragma once
-#include <functional>
+#include <vector>
+#include "Graphics/TextureData.h"
+#include "Graphics/TexturePartInfo.h"
 
-namespace glowy2d
+//TODO
+//Conversion to TextureData
+//-add colors, hsb, shaders, rotation
+
+namespace glowy3d
 {
 
-class Action
+class TextureInfo
 {
 public:
-	Action(std::function<void()> actionFunction) : action(actionFunction) {}
+	//Represents a single texture frame composed of TexturePartInfo's
+	TextureInfo();
+	~TextureInfo();
 
-	~Action() {}
+	void addPart(TexturePartInfo * part);
 
-	void activate() const;
-
+	TextureData * getTextureData();
+	
 private:
-	std::function<void()> action;
-};
+	std::vector<TexturePartInfo*> parts;
 
+	bool isGenerated = false;
+	TextureData * generated;
+
+	void generate();
+};
+	
 }

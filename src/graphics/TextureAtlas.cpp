@@ -1,5 +1,5 @@
 /****************************************************************************
-This file is part of glowy2d.
+This file is part of glowy3d.
 
 Copyright (c) 2015 Kvachev 'Rasie1' V. D.
 
@@ -27,7 +27,10 @@ THE SOFTWARE.
 
 #define MAX_POSSIBLE_GAP 10
 
-namespace glowy2d
+using namespace std;
+using namespace glm;
+
+namespace glowy3d
 {
 
 TextureAtlas::TextureAtlas(unsigned short maxSize) : 

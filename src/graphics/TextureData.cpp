@@ -1,5 +1,5 @@
 /****************************************************************************
-This file is part of glowy2d.
+This file is part of glowy3d.
 
 Copyright (c) 2015 Kvachev 'Rasie1' V. D.
 
@@ -26,7 +26,10 @@ THE SOFTWARE.
 #include "Base/System.h"
 #include "png.h"
 
-namespace glowy2d
+using namespace std;
+using namespace glm;
+
+namespace glowy3d
 {
 
 TextureData::TextureData(usvec2 textureSize, ubyte * dataArray) :

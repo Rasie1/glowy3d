@@ -1,47 +1,26 @@
-/****************************************************************************
-This file is part of glowy2d.
-
-Copyright (c) 2015 Kvachev 'Rasie1' V. D.
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-****************************************************************************/
-#include "epc.h"
-#include "Base/System.h"
-#include "Base/Config.h"
-#include "Base/Scheduler.h"
-#include "Graphics/Camera.h"
-#include "Graphics/Sprite.h"
-#include "Graphics/Layer.h"
-#include "Graphics/FramerateCounter.h"
-#include "Platforms/Renderer.h"
-#include "Platforms/ShaderProgram.h"
-#include "Platforms/UniformMat2.h"
-#include "Platforms/IndexBuffer.h"
-#include "Platforms/Input.h"
-#include "Platforms/Window.h"
-#include "Platforms/VertexInterleavedBuffer.h"
-#include "Graphics/TextureData.h"
-#include "Platforms/Tex2D.h"
+#include "base/System.h"
+#include "base/Config.h"
+#include "base/Scheduler.h"
+#include "graphics/Camera.h"
+#include "graphics/Sprite.h"
+#include "graphics/Layer.h"
+#include "graphics/FramerateCounter.h"
+#include "platforms/Renderer.h"
+#include "platforms/ShaderProgram.h"
+#include "platforms/UniformMat2.h"
+#include "platforms/IndexBuffer.h"
+#include "platforms/Input.h"
+#include "platforms/Window.h"
+#include "platforms/VertexInterleavedBuffer.h"
+#include "graphics/TextureData.h"
+#include "platforms/Tex2D.h"
 #include "png.h"
 
 
-namespace glowy2d
+using namespace std;
+using namespace glm;
+
+namespace glowy3d
 {
 
 #ifdef R_D3D
