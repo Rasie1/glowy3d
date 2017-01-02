@@ -1,6 +1,7 @@
 #include "base/Config.h"
 #include "base/ConfigReader.h"
 #include <map>
+#include <iostream>
 
 using namespace std;
 
@@ -40,6 +41,8 @@ void Config::readFromFile(const std::string& filename = "config.txt")
 	screenResolution = 
 		usvec2(static_cast<uint16>(settings["ScreenWidth"]),
 			   static_cast<uint16>(settings["ScreenHeight"]));
+    std::cout << screenResolution.x << endl;
+    std::cout << screenResolution.y << endl;
 	maxFramerate = 
 		static_cast<uint>(settings["MaxFPS"]);
 	fullScreen = 
