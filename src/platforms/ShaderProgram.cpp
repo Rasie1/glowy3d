@@ -1,12 +1,14 @@
-#include "epc.h"
-#ifdef R_OGL
-#include "Platforms/ShaderProgram.h"
+#include "platforms/ShaderProgram.h"
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
 #include <fstream>
-#include "Platforms/Renderer.h"
-#include "Math/vertex.h"
-#include "Platforms/VertexInterleavedBuffer.h"
+#include <iostream>
+#include <vector>
+#include "platforms/Renderer.h"
+#include "math/vertex.h"
+#include "platforms/VertexInterleavedBuffer.h"
 
-std::string readFile(const char * filePath)
+std::string readFile(const char *filePath)
 {
 	std::string content;
 	std::ifstream fileStream(filePath, std::ios::in);
@@ -108,4 +110,3 @@ void ShaderProgram::use()
 }
 
 }
-#endif

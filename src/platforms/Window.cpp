@@ -1,18 +1,16 @@
-#include "epc.h"
-#ifdef R_OGL
-#include "Platforms/Window.h"
-#include "Platforms/Renderer.h"
-#include "Base/System.h"
-#include "Base/Config.h"
-
-using namespace std;
+#include "platforms/Window.h"
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+#include "platforms/Renderer.h"
+#include "base/System.h"
+#include "base/Config.h"
 
 using namespace std;
 
 namespace glowy3d
 {
 
-static void error_callback(int error, const char * description)
+static void error_callback(int error, const char *description)
 {
 	fputs(description, stderr);
 	throw runtime_error("GLFW error");
@@ -51,7 +49,7 @@ Window::~Window()
 {
 }
 
-WindowHandle * Window::getHandle() const
+WindowHandle* Window::getHandle() const
 {
 	return handle;
 }
@@ -66,7 +64,7 @@ void Window::close()
 	glfwSetWindowShouldClose(handle, GL_TRUE);
 }
 
-void Window::setText(const char * str)
+void Window::setText(const char *str)
 {
 	glfwSetWindowTitle(handle, str);
 }
@@ -77,4 +75,3 @@ usvec2 Window::getSize() const
 }
 
 }
-#endif

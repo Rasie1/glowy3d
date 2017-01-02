@@ -1,16 +1,19 @@
-#include "epc.h"
-#ifdef R_OGL
-#include "Base/System.h"
-#include "Graphics/Camera.h"
-#include "Platforms/Window.h"
-#include "Platforms/Input.h"
+#include "base/System.h"
+#include <GLFW/glfw3.h>
+#include "graphics/Camera.h"
+#include "platforms/Window.h"
+#include "platforms/Input.h"
 
 using namespace std;
 
 namespace glowy3d
 {
 
-void callbackFunction(GLFWwindow * window, int key, int scancode, int action, int mods)
+void callbackFunction(GLFWwindow* window, 
+                      int key, 
+                      int scancode, 
+                      int action, 
+                      int mods)
 {
 	if (Input::callbacks[action][key] != 0)
 		Input::callbacks[action][key]();
@@ -65,4 +68,3 @@ std::function<void(void)> Input::callbacks[3][350];
 bool Input::isKeyPressed[350] = { 0 };
 
 }
-#endif

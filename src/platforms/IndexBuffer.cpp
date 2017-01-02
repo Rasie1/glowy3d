@@ -1,4 +1,9 @@
 #include <cassert>
+#include <GL/glew.h>
+#include <GL/gl.h>
+#include <GL/glx.h>
+#include <GL/glext.h>
+#include <GL/glxext.h>
 #include "platforms/IndexBuffer.h"
 #include "platforms/Renderer.h"
 

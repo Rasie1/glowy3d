@@ -1,15 +1,16 @@
-#include "epc.h"
-#ifdef R_OGL
-#include "Platforms/Renderer.h"
-#include "Platforms/ShaderProgram.h"
-#include "Platforms/Window.h"
-#include "Base/System.h"
-#include "Base/Config.h"
-#include "Platforms/VertexInterleavedBuffer.h"
-#include "Platforms/IndexBuffer.h"
-#include "Platforms/UniformMat2.h"
+#include "platforms/Renderer.h"
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+#include "platforms/ShaderProgram.h"
+#include "platforms/Window.h"
+#include "base/System.h"
+#include "base/Config.h"
+#include "platforms/VertexInterleavedBuffer.h"
+#include "platforms/IndexBuffer.h"
+#include "platforms/UniformMat2.h"
 #include <fstream>
 #include <chrono>
+#include <iostream>
 
 
 using namespace std;
@@ -66,7 +67,8 @@ void Renderer::render()
 	present(System::config->getVSync());
 }
 
-void Renderer::setMatrix(const mat2& modelMatrix, const mat2& cameraMatrix)
+void Renderer::setMatrix(const mat2& modelMatrix, 
+                         const mat2& cameraMatrix)
 {
 	viewMatrixUniform->updateData(cameraMatrix);
 	modelMatrixUniform->updateData(modelMatrix);
@@ -102,4 +104,3 @@ void Renderer::swapBuffers()
 }
 
 }
-#endif

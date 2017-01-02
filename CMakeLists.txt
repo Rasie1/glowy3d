@@ -3,6 +3,9 @@ add_definitions(-std=c++14 -g -Wall -Wextra)
 
 project(glowy3d)
 
+
+find_package(OpenGL REQUIRED)
+
 include_directories(include)
 file(GLOB_RECURSE SRC_LIST src *.cpp)
 

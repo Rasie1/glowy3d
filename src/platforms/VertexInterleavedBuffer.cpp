@@ -1,9 +1,9 @@
-#include "epc.h"
-#ifdef R_OGL
+#include "platforms/VertexInterleavedBuffer.h"
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
 #include <cassert>
-#include "Platforms/VertexInterleavedBuffer.h"
-#include "Platforms/Renderer.h"
-#include "Math/vertex.h"
+#include "platforms/Renderer.h"
+#include "math/vertex.h"
 
 using namespace std;
 
@@ -12,7 +12,7 @@ using namespace std;
 namespace glowy3d
 {
 
-VertexInterleavedBuffer::VertexInterleavedBuffer(const void * data, uint size)
+VertexInterleavedBuffer::VertexInterleavedBuffer(const void *data, uint size)
 {
 	glGenBuffers(1, &id);
 
@@ -53,7 +53,7 @@ void VertexInterleavedBuffer::setLayoutForTextureCoords()
 						  (void*)offsetof(vertex, vertex::texture));
 }
 
-void VertexInterleavedBuffer::updateData(const void * data, uint size, uint offset)
+void VertexInterleavedBuffer::updateData(const void *data, uint size, uint offset)
 {
 	glBufferSubData(GL_ARRAY_BUFFER, offset, size, data);
 }
@@ -65,4 +65,3 @@ void VertexInterleavedBuffer::setLayout()
 }
 
 }
-#endif

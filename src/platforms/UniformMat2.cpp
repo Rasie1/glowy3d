@@ -1,5 +1,7 @@
 #include "platforms/UniformMat2.h"
 #include <cassert>
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
 #include "platforms/Renderer.h"
 #include "platforms/ShaderProgram.h"
 
