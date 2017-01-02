@@ -33,7 +33,7 @@ void Config::readFromFile(const std::string& filename = "config.txt")
 	values["OpenGL3"] = 1;
 
 	ConfigReader reader;
-	auto settings = reader.read(filename, "glowy2d::Config", values);
+	auto settings = reader.read(filename, "glowy3d::Config", values);
 
 	antialiasingSamples = 
 		static_cast<uint>(settings["AntialiasingSamples"]);

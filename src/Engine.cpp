@@ -7,7 +7,7 @@ using namespace std;
 namespace glowy3d
 {
 
-int glowy2Dmain(int(*init)(), void(*update)())
+void start(void(*init)(), void(*update)())
 {
 	std::cout << "-- Starting engine" << std::endl;
 	System::init();
@@ -23,7 +23,6 @@ int glowy2Dmain(int(*init)(), void(*update)())
 	}
 
 	System::exit();
-	return 0;
 }
 
 }
