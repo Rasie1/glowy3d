@@ -1,5 +1,6 @@
 #include "base/Config.h"
 #include "base/ConfigReader.h"
+#include <cpptoml.h>
 #include <map>
 #include <iostream>
 
@@ -8,48 +9,55 @@ using namespace std;
 namespace glowy3d
 {
 
-Config::Config()
+Config::Config(const std::string& filename)
 {
+    auto config = cpptoml::parse_file(filename);
+
+    auto pScreenResolutionW = config->get_qualified_as<unsigned short>("glowy3d.ScreenWidth");
+    auto pScreenResolutionH = config->get_qualified_as<unsigned short>("glowy3d.ScreenHeight");
+    auto pAntialiasingSamples = config->get_qualified_as<uint>("glowy3d.AntialiasingSamples");
+    auto pFullScreen = config->get_qualified_as<bool>("glowy3d.FullScreen");
+    auto pMaxFramerate = config->get_qualified_as<uint>("glowy3d.MaxFPS");
+
+    if (pScreenResolutionH && pScreenResolutionW)
+    {
+        this->screenResolution = usvec2(*pScreenResolutionW, *pScreenResolutionH);
+    }
+    else
+    {
+        this->screenResolution = Defaults::screenResolution;
+    }
+    if (pAntialiasingSamples)
+    {
+        this->antialiasingSamples = *pAntialiasingSamples;
+    }
+    else
+    {
+        this->antialiasingSamples = Defaults::antialiasingSamples;
+    }
+    if (pFullScreen)
+    {
+        this->fullScreen = *pFullScreen;
+    }
+    else
+    {
+        this->fullScreen = Defaults::fullScreen;
+    }
+    if (pMaxFramerate)
+    {
+        this->maxFramerate = *pMaxFramerate;
+    }
+    else
+    {
+        this->maxFramerate = Defaults::maxFramerate;
+    }
 }
 
-Config::Config(const std::string& fileName)
-{
-	readFromFile(fileName);
-}
 
-Config::~Config()
-{
-}
-
-const uint Config::Default::antialiasingSamples = 16;
-const uint Config::Default::maxFramerate = 60;
-const bool Config::Default::fullScreen = false;
-const usvec2 Config::Default::screenResolution = usvec2(800, 600);
-const Config::Platform Config::Default::platform = Config::Platform::D3D11;
-
-void Config::readFromFile(const std::string& filename = "config.txt")
-{
-	map<string, long> values;
-	values["D3D11"] = 0;
-	values["OpenGL3"] = 1;
-
-	ConfigReader reader;
-	auto settings = reader.read(filename, "glowy3d::Config", values);
-
-	antialiasingSamples = 
-		static_cast<uint>(settings["AntialiasingSamples"]);
-	screenResolution = 
-		usvec2(static_cast<uint16>(settings["ScreenWidth"]),
-			   static_cast<uint16>(settings["ScreenHeight"]));
-    std::cout << screenResolution.x << endl;
-    std::cout << screenResolution.y << endl;
-	maxFramerate = 
-		static_cast<uint>(settings["MaxFPS"]);
-	fullScreen = 
-		static_cast<bool>(settings["FullScreen"]);
-	platform = 
-		static_cast<Platform>(settings["Platform"]);
-}
+const uint   Config::Defaults::antialiasingSamples = 4;
+const uint   Config::Defaults::maxFramerate = 60;
+const bool   Config::Defaults::fullScreen = false;
+const usvec2 Config::Defaults::screenResolution = usvec2(800, 600);
 
 uint Config::getAntialiasing() const
 {
@@ -64,11 +72,6 @@ uint Config::getMaxFramerate() const
 bool Config::getVSync() const
 {
 	return maxFramerate != 0;
-}
-
-Config::Platform Config::getPlatform() const
-{
-	return platform;
 }
 
 usvec2 Config::getScreenResolution() const
