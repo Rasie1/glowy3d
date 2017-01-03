@@ -5,6 +5,7 @@ include_directories (${TEST_SOURCE_DIR})
 ADD_DEFINITIONS(-DBOOST_TEST_DYN_LINK) 
 
 file(GLOB_RECURSE SAMPLE_PLATFORMER_SRC *.cpp)
+file(GLOB_RECURSE SAMPLE_PLATFORMER_RES ../../res/SamplePlatformer/*)
 
 add_executable (sampleplatformer ${SAMPLE_PLATFORMER_SRC} ${TEST_SOURCE_DIR}) 
 
