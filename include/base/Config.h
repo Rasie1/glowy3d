@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <boost/optional.hpp>
 #include "g2dMath.h"
 
 namespace glowy3d
@@ -24,12 +25,16 @@ public:
 	bool	 getVSync() const;
 	usvec2	 getScreenResolution() const;
 	bool	 getFullScreen() const;
+    std::string getVertexShaderPath() const;
+    std::string getFragmentShaderPath() const;
 
 private:
 	uint	 antialiasingSamples; 
 	uint	 maxFramerate;		 
 	usvec2	 screenResolution;	 
 	bool	 fullScreen;			 
+    std::string vertexShaderPath;
+    std::string fragmentShaderPath;
 };
 
 }

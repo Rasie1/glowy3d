@@ -23,7 +23,7 @@ Renderer::Renderer()
 	if (glewInit() != GLEW_OK)
 		throw std::runtime_error("Failed to initialize GLEW");
 
-	cout << "GLEW OK" << endl;
+	cout << "GLEW initialized" << endl;
 
 	// Cull back sides (it works faster with those three on)
 	glEnable(GL_CULL_FACE);
@@ -37,7 +37,8 @@ Renderer::Renderer()
 
 	glfwSwapInterval(System::config->getMaxFramerate());
 
-	shaderProgram = new ShaderProgram("Shaders\\Texture.vsh", "Shaders\\Texture.fsh");
+	shaderProgram = new ShaderProgram(System::config->getVertexShaderPath(), 
+                                      System::config->getFragmentShaderPath());
 	shaderProgram->use();
 
 	modelMatrixUniform = new UniformMat2(shaderProgram, "model", 0);
