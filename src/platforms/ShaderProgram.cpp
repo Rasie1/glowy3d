@@ -51,7 +51,7 @@ ShaderProgram::ShaderProgram(const std::string& vertexPath, const std::string& f
 	int logLength;
 
 	// Compile vertex shader
-	std::cout << "Compiling vertex shader." << std::endl;
+	std::cout << "Compiling vertex shader" << std::endl;
 	glShaderSource(vertShader, 1, &vertShaderSrc, NULL);
 	glCompileShader(vertShader);
 
@@ -63,7 +63,7 @@ ShaderProgram::ShaderProgram(const std::string& vertexPath, const std::string& f
 	std::cout << &vertShaderError[0] << std::endl;
 
 	// Compile fragment shader
-	std::cout << "Compiling fragment shader." << std::endl;
+	std::cout << "Compiling fragment shader" << std::endl;
 	glShaderSource(fragShader, 1, &fragShaderSrc, NULL);
 	glCompileShader(fragShader);
 

@@ -22,11 +22,6 @@ using namespace std;
 namespace glowy3d
 {
 
-#ifdef R_D3D
-using namespace DirectX;
-HRESULT hr;
-#endif
-
 Config			 * System::config;
 Window			 * System::window;
 Renderer		 * System::renderer;
@@ -41,15 +36,16 @@ double			   System::deltaTime;
 
 bool System::init()
 {
-	cout << "-- Reading config.txt" << endl;
+	cout << "Reading config.txt" << endl;
 	config   = new Config("config.txt");
-	cout << "-- Initializing window" << endl;
+	cout << "Initializing window" << endl;
 	window = new Window();
-	cout << "-- Done" << endl;
+	cout << "Done initializing window" << endl;
 	camera = new Camera();
-	cout << "-- Initializing renderer" << endl;
+	cout << "Initializing renderer" << endl;
 	renderer = new Renderer();
-	cout << "-- Done; Starting application" << endl;
+	cout << "Done initializing renderer" << endl;
+    cout << "Starting application" << endl;
 	scheduler = new Scheduler();
 	Input::init();
 	framerateCounter = new FramerateCounter();
