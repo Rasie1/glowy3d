@@ -119,7 +119,7 @@ void VertexInterleavedBufferWithNormals::setLayoutForNormals()
 void VertexInterleavedBufferWithNormals::setLayoutForTextureCoords()
 {
     glEnableVertexAttribArray(2);
-    glVertexAttribPointer(1, 2,
+    glVertexAttribPointer(2, 2,
                           GL_FLOAT, 
                           GL_FALSE, 
                           sizeof(vertexn), 
