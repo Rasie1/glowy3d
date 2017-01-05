@@ -4,12 +4,9 @@ include_directories (${TEST_SOURCE_DIR})
 
 ADD_DEFINITIONS(-DBOOST_TEST_DYN_LINK) 
 
-file(GLOB_RECURSE SAMPLE_PLATFORMER_SRC *.cpp)
-file(GLOB_RECURSE SAMPLE_PLATFORMER_RES ../../res/SamplePlatformer/*)
+add_executable (cube main.cpp ${TEST_SOURCE_DIR}) 
 
-add_executable (sampleplatformer ${SAMPLE_PLATFORMER_SRC} ${TEST_SOURCE_DIR}) 
-
-target_link_libraries(sampleplatformer
+target_link_libraries(cube
                       ${Boost_FILESYSTEM_LIBRARY}
                       ${Boost_SYSTEM_LIBRARY}
                       ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY}
@@ -22,7 +19,8 @@ target_link_libraries(sampleplatformer
                       dl
                       GLEW
                       png
+                      tinyobjloader
                       )
 
 enable_testing()
-add_test(glowy3d sampleplatformer)
+add_test(glowy3d cube)

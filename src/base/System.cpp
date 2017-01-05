@@ -3,8 +3,6 @@
 #include "base/Config.h"
 #include "base/Scheduler.h"
 #include "graphics/Camera.h"
-#include "graphics/Sprite.h"
-#include "graphics/Layer.h"
 #include "graphics/FramerateCounter.h"
 #include "platforms/Renderer.h"
 #include "platforms/ShaderProgram.h"
@@ -28,7 +26,6 @@ Renderer		 * System::renderer;
 Camera			 * System::camera;
 Scheduler		 * System::scheduler;
 FramerateCounter * System::framerateCounter;
-IndexBuffer		 * System::indexBuffer;
 unsigned short	   System::layersNum;
 double			   System::currentTime;
 double			   System::lastTime;
@@ -52,26 +49,6 @@ bool System::init()
 	scheduler->add(framerateCounter, 1.0);
 
 	deltaTime = 0;
-	layersNum = 0;
-
-	const uint maxSpritesPerLayer = 800 * 800;
-	const uint iboSize			  = maxSpritesPerLayer * 6;
-	uint     * iboList = new uint[iboSize];
-
-	for (int iVertex = 0, i = 0; i < iboSize; iVertex += 4, i += 6)
-	{
-		iboList[i]	   = iVertex;
-		iboList[i + 1] = iVertex + 1;
-		iboList[i + 2] = iVertex + 2;
-		iboList[i + 3] = iVertex + 3;
-		iboList[i + 4] = iVertex + 2;
-		iboList[i + 5] = iVertex + 1;
-	}
-
-	indexBuffer = new IndexBuffer(iboList, iboSize * sizeof(uint));
-	indexBuffer->bind();
-
-	delete[] iboList;
 
 	Input::setUpDefaultControls();
 
@@ -96,7 +73,6 @@ double System::getTime()
 void System::frameStart()
 {
 	Input::process();
-	renderer->setMatrix(mat2(1.f, 0.f, 0.f, 1.f), camera->getMatrix());
 	renderer->frameStart();
 
 	//Timing stuff
@@ -118,10 +94,8 @@ void System::frameEnded()
 void System::exit()
 {
 	Input::deinit();
-	delete indexBuffer;
 	delete framerateCounter;
 	delete scheduler;
-	delete camera;
 	delete renderer;
 	delete window;
 	std::exit(EXIT_SUCCESS);

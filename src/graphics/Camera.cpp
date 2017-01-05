@@ -14,40 +14,49 @@ Camera::Camera() :
 	setDefaultZoom();
 }
 
-const mat2& Camera::getMatrix()
+const mat3& Camera::getMatrix()
 {
 	return matrix;
 }
 
-void Camera::setPosition(const vec2& position)
+void Camera::setPosition(const vec3& position)
 {
 	matrix[1][0] = position.x;
-	matrix[1][1] = position.y;
+    matrix[1][1] = position.y;
+    matrix[1][2] = position.z;
 }
 
-void Camera::addPosition(const vec2& offset)
+void Camera::addPosition(const vec3& offset)
 {
 	matrix[1][0] += offset.x;
-	matrix[1][1] += offset.y;
+    matrix[1][1] += offset.y;
+    matrix[1][2] += offset.z;
 }
 
 void Camera::addZoom(const float offset)
 {
 	matrix[0][0] += offset * matrix[0][0];
-	matrix[0][1] += offset * matrix[0][1];
-	matrix[1][0] += offset * matrix[1][0];
-	matrix[1][1] += offset * matrix[1][1];
+    matrix[0][1] += offset * matrix[0][1];
+	matrix[0][2] += offset * matrix[0][2];
+    matrix[1][0] += offset * matrix[1][0];
+    matrix[1][1] += offset * matrix[1][1];
+    matrix[1][2] += offset * matrix[1][2];
+    matrix[2][0] += offset * matrix[2][0];
+    matrix[2][1] += offset * matrix[2][1];
+    matrix[2][2] += offset * matrix[2][2];
 }
 
 void Camera::setDefaultZoom()
 {
 	float xxx = 2.f / 
 		float(System::config->getScreenResolution().x);
-	float yyy = 2.f / 
-		float(System::config->getScreenResolution().y);
+    float yyy = 2.f / 
+        float(System::config->getScreenResolution().y);
+    float zzz = 1;
 
-	matrix = mat2(xxx, yyy,
-				  0.f, 0.f);
+	matrix = mat3(xxx, yyy, zzz,
+				  0.f, 0.f, 0.f,
+                  0.f, 0.f, 0.f);
 }
 
 void Camera::setUpDefaultMovementControls()
@@ -56,25 +65,29 @@ void Camera::setUpDefaultMovementControls()
 	Input::setKeyCallback(Input::Keyboard::w, Input::PressType::hold,
 		[&]()
 	{
-		addPosition(vec2(0.f, 
-						 -moveSpeed * System::getDeltaTime()));
+		addPosition(vec3(0.f, 
+						 -moveSpeed * System::getDeltaTime(),
+                         0.f));
 	});
 	Input::setKeyCallback(Input::Keyboard::s, Input::PressType::hold,
 		[&]()
 	{
-		addPosition(vec2(0.f, 
-						 moveSpeed * System::getDeltaTime()));
+		addPosition(vec3(0.f, 
+						 moveSpeed * System::getDeltaTime(),
+                         0.f));
 	});
 	Input::setKeyCallback(Input::Keyboard::d, Input::PressType::hold,
 		[&]()
 	{
-		addPosition(vec2(-moveSpeed * System::getDeltaTime(), 
+		addPosition(vec3(0.f,
+                         -moveSpeed * System::getDeltaTime(), 
 					     0.f));
 	});
 	Input::setKeyCallback(Input::Keyboard::a, Input::PressType::hold,
 		[&]()
 	{
-		addPosition(vec2(moveSpeed * System::getDeltaTime(),
+		addPosition(vec3(0.f,
+                         moveSpeed * System::getDeltaTime(),
 					     0.f));
 	});
 	Input::setKeyCallback(Input::Keyboard::space, Input::PressType::hold,

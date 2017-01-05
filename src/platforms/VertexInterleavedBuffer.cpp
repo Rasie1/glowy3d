@@ -39,14 +39,17 @@ void VertexInterleavedBuffer::bind()
 void VertexInterleavedBuffer::setLayoutForPosition()
 {
 	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(vertex), 0);
+	glVertexAttribPointer(0, 3, 
+                          GL_FLOAT, 
+                          GL_FALSE, 
+                          sizeof(vertex), 
+                          0);
 }
 
 void VertexInterleavedBuffer::setLayoutForTextureCoords()
 {
 	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(1, 
-						  2, 
+	glVertexAttribPointer(1, 2,
 						  GL_FLOAT, 
 						  GL_FALSE, 
 						  sizeof(vertex), 

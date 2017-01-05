@@ -10,10 +10,10 @@ public:
 	Camera();
 
 	//Returns Projection and View product matrix
-	const mat2& getMatrix();
+	const mat3& getMatrix();
 
-	void setPosition(const glm::vec2& position);
-	void addPosition(const glm::vec2& offset);
+	void setPosition(const glm::vec3& position);
+	void addPosition(const glm::vec3& offset);
 
 	void addZoom(const float offset);
 	void setDefaultZoom();
@@ -23,10 +23,10 @@ public:
 	void enableTransform();
 
 private:
-	mat2 matrix;
+	mat3 matrix;
 
 	bool noTransform;
-	mat2 noTransformMatrix;
+	mat3 noTransformMatrix;
 };
 
 }

@@ -14,6 +14,7 @@ namespace glowy3d
 
 IndexBuffer::IndexBuffer(const void *data, uint size)
 {
+    glGenBuffers(1, &bufferId);
 	bind();
 	this->size = size;
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, size, data, GL_STATIC_DRAW);

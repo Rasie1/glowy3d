@@ -11,8 +11,7 @@ vertex::vertex(const vec3& position, const vec2& texture) :
 }
 
 vertex::vertex(float x, float y, float z, float u, float v) :
-	position(x, y),
-	zOrder(z),
+	position(x, y, z),
 	texture(u, v)
 {
 }
@@ -29,7 +28,7 @@ float vertex::y() const
 
 float vertex::z() const
 {
-	return zOrder;
+	return position.z;
 }
 
 float vertex::u() const

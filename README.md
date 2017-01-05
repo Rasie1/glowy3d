@@ -12,6 +12,7 @@ It is a fork of [glowy2d](https://github.com/Rasie1/glowy2d/) engine previously 
 - cpptoml
 - OpenGL, GLEW, glfw3
 - zlib, libpng
+- tinyobjloader
 
 ## How to build
 

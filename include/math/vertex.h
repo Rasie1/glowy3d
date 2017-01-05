@@ -7,8 +7,7 @@ namespace glowy3d
 struct vertex
 {
 	//Data
-	vec2 position;
-	float zOrder;
+	vec3 position;
 	vec2 texture;
 
 	vertex() {}

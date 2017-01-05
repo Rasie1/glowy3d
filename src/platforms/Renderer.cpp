@@ -37,14 +37,6 @@ Renderer::Renderer()
 
 	glfwSwapInterval(System::config->getMaxFramerate());
 
-	shaderProgram = new ShaderProgram(System::config->getVertexShaderPath(), 
-                                      System::config->getFragmentShaderPath());
-	shaderProgram->use();
-
-	modelMatrixUniform = new UniformMat2(shaderProgram, "model", 0);
-	modelMatrixUniform->bind();
-	viewMatrixUniform = new UniformMat2(shaderProgram, "camera", 1);
-	viewMatrixUniform->bind();
 }
 
 Renderer::~Renderer()
