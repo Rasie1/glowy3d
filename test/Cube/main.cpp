@@ -151,28 +151,27 @@ int main()
         bricksTexture->bind();
     };
 
+    vec3 position = vec3(0, 0, 5);
+    float horizontalAngle = 3.14f;
+    float verticalAngle = 0.0f;
+    float fov = 45.0f;
+    float speed = 3.0f; 
+    float mouseSpeed = 1.0f;
+
     auto update = [&](){
-
-        glm::vec3 position = glm::vec3( 0, 0, 5 );
-        float horizontalAngle = 3.14f;
-        float verticalAngle = 0.0f;
-        float initialFoV = 45.0f;
-
-        float speed = 3.0f; 
-        float mouseSpeed = 0.005f;
         double xpos, ypos;
         float deltaTime = System::getDeltaTime();
 
-        // double currentTime = glfwGetTime();
-        // float deltaTime = float(currentTime - lastTime);
-
         auto window = System::window->getHandle();
 
-        glfwGetCursorPos(window, &xpos, &ypos);
-        glfwSetCursorPos(window, 1024/2, 768/2);
+        auto windowWidth  = System::window->getSize().x;
+        auto windowHeight = System::window->getSize().y;
 
-        horizontalAngle += mouseSpeed * deltaTime * float(1024/2 - xpos );
-        verticalAngle   += mouseSpeed * deltaTime * float( 768/2 - ypos );
+        glfwGetCursorPos(window, &xpos, &ypos);
+        glfwSetCursorPos(window, windowWidth/2, windowHeight/2);
+
+        horizontalAngle += mouseSpeed * deltaTime * float(windowWidth /2 - xpos );
+        verticalAngle   += mouseSpeed * deltaTime * float(windowHeight/2 - ypos );
 
 
         glm::vec3 direction(
@@ -189,40 +188,35 @@ int main()
 
         glm::vec3 up = glm::cross( right, direction );
 
-        if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS){
+        if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
             position += direction * deltaTime * speed;
-        }
-        // Move backward
-        if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS){
+        if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
             position -= direction * deltaTime * speed;
-        }
-        // Strafe right
-        if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS){
+        if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
             position += right * deltaTime * speed;
-        }
-        // Strafe left
-        if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS){
+        if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
             position -= right * deltaTime * speed;
-        }
+        if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
+            position += up * deltaTime * speed;
+        if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)
+            position -= up * deltaTime * speed;
 
-        float FoV = initialFoV;// - 5 * glfwGetMouseWheel();
-
-        mat4 ProjectionMatrix = glm::perspective(FoV, 4.0f / 3.0f, 0.1f, 100.0f);
-        mat4 ViewMatrix       = glm::lookAt(
-            position,           // Camera is here
-            position+direction, // and looks here : at the same position, plus "direction"
-            up                  // Head is up (set to 0,-1,0 to look upside-down)
-        );
+        mat4 projectionMatrix = glm::perspective(fov, 4.0f / 3.0f,
+                                                 0.1f, 100.0f);
+        mat4 viewMatrix = glm::lookAt(
+            position,           
+            position+direction, 
+            up);
 
 
-        glm::mat4 ModelMatrix = glm::mat4(1.0);
-        glm::mat4 MVP = ProjectionMatrix * ViewMatrix * ModelMatrix;
+        glm::mat4 modelMatrix = glm::mat4(1.0);
+        glm::mat4 mvp = projectionMatrix * viewMatrix * modelMatrix;
 
         auto mvpUniformLocation = glGetUniformLocation(
             shaderProgram->id, 
             "mvp_matrix");
 
-        glUniformMatrix4fv(mvpUniformLocation, 1, GL_FALSE, (float*)&MVP);
+        glUniformMatrix4fv(mvpUniformLocation, 1, GL_FALSE, (float*)&mvp);
 
 
         indexBuffer->bind();
