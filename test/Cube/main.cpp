@@ -142,8 +142,6 @@ int main()
         buffer = new VertexInterleavedBuffer(data.data(), data.size() * sizeof(vertex));
         buffer->setLayout();
         buffer->bind();
-        // int positionLocation = program->attributeLocation("position");
-        // int texcoordLocation = program->attributeLocation("texcoord");
         indexBuffer = new IndexBuffer(indexData.data(), indexData.size() * sizeof(uint));
         indexBuffer->bind();
 
@@ -156,22 +154,22 @@ int main()
     float verticalAngle = 0.0f;
     float fov = 45.0f;
     float speed = 3.0f; 
-    float mouseSpeed = 1.0f;
+    float mouseSpeed = 10.0f;
+    mat4 modelMatrix = glm::mat4(1.0);
+
 
     auto update = [&](){
-        double xpos, ypos;
         float deltaTime = System::getDeltaTime();
-
         auto window = System::window->getHandle();
-
         auto windowWidth  = System::window->getSize().x;
         auto windowHeight = System::window->getSize().y;
 
-        glfwGetCursorPos(window, &xpos, &ypos);
+        double cursorX, cursorY;
+        glfwGetCursorPos(window, &cursorX, &cursorY);
         glfwSetCursorPos(window, windowWidth/2, windowHeight/2);
 
-        horizontalAngle += mouseSpeed * deltaTime * float(windowWidth /2 - xpos );
-        verticalAngle   += mouseSpeed * deltaTime * float(windowHeight/2 - ypos );
+        horizontalAngle += mouseSpeed * deltaTime * float(windowWidth /2 - cursorX );
+        verticalAngle   += mouseSpeed * deltaTime * float(windowHeight/2 - cursorY );
 
 
         glm::vec3 direction(
@@ -208,8 +206,7 @@ int main()
             position+direction, 
             up);
 
-
-        glm::mat4 modelMatrix = glm::mat4(1.0);
+        modelMatrix = rotate(modelMatrix, 2 * deltaTime, vec3(1,1,1));
         glm::mat4 mvp = projectionMatrix * viewMatrix * modelMatrix;
 
         auto mvpUniformLocation = glGetUniformLocation(

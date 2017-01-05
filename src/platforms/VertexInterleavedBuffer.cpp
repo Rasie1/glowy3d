@@ -67,4 +67,81 @@ void VertexInterleavedBuffer::setLayout()
 	setLayoutForPosition();
 }
 
+
+
+
+
+
+VertexInterleavedBufferWithNormals::VertexInterleavedBufferWithNormals(const void *data, uint size)
+{
+    glGenBuffers(1, &id);
+
+    bind();
+    this->size = size;
+    glBufferData(GL_ARRAY_BUFFER, size, data, GL_DYNAMIC_DRAW);
+}
+
+VertexInterleavedBufferWithNormals::~VertexInterleavedBufferWithNormals()
+{
+    deleteBuffer();
+}
+
+void VertexInterleavedBufferWithNormals::deleteBuffer()
+{
+}
+
+
+void VertexInterleavedBufferWithNormals::bind()
+{
+    glBindBuffer(GL_ARRAY_BUFFER, id);
+}
+
+void VertexInterleavedBufferWithNormals::setLayoutForPosition()
+{
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0, 3, 
+                          GL_FLOAT, 
+                          GL_FALSE, 
+                          sizeof(vertexn), 
+                          0);
+}
+
+void VertexInterleavedBufferWithNormals::setLayoutForNormals()
+{
+    glEnableVertexAttribArray(1);
+    glVertexAttribPointer(1, 3, 
+                          GL_FLOAT, 
+                          GL_FALSE, 
+                          sizeof(vertexn), 
+                          (void*)offsetof(vertexn, vertexn::normal));
+}
+
+void VertexInterleavedBufferWithNormals::setLayoutForTextureCoords()
+{
+    glEnableVertexAttribArray(2);
+    glVertexAttribPointer(1, 2,
+                          GL_FLOAT, 
+                          GL_FALSE, 
+                          sizeof(vertexn), 
+                          (void*)offsetof(vertexn, vertexn::texture));
+}
+
+void VertexInterleavedBufferWithNormals::updateData(const void *data, uint size, uint offset)
+{
+    glBufferSubData(GL_ARRAY_BUFFER, offset, size, data);
+}
+
+void VertexInterleavedBufferWithNormals::setLayout()
+{
+    setLayoutForPosition();
+    setLayoutForNormals();
+    setLayoutForTextureCoords();
+}
+
+
+
+
+
+
+
 }
